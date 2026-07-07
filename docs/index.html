@@ -132,6 +132,16 @@
                 RoboHarness assumes access to existing robot control policies and auxiliary tools, all packaged as callable agentic skills for a coding agent. Given a high-level instruction, it decomposes the task, routes each subtask to a policy operating within its capability region, and bridges the handoff between successive policies to preserve spatial consistency.
             </p>
 
+            <figure class="figure">
+                <img src="assets/images/harness_framework.png" alt="RoboHarness framework: input information flows through Understand, Memory, and Evolution skills to route subtasks across heterogeneous policies (VLA, TAMP, RL), producing an output plan with memory bridges." loading="lazy">
+                <figcaption>
+                    <strong>The RoboHarness framework.</strong> Multimodal input (image, text, estimated pose, robot state)
+                    is processed by <em>Understand</em>, <em>Memory</em>, and <em>Evolution</em> skills. The agent decomposes
+                    the instruction into subtasks, routes each to a heterogeneous policy (TAMP, VLA, RL, …), and inserts a
+                    <em>Memory Bridge</em> at every policy handoff — with retrieval/update loops that continually refine the harness.
+                </figcaption>
+            </figure>
+
             <div class="pipeline">
                 <div class="stage">
                     <span class="icon">🗣️</span>
@@ -180,6 +190,24 @@
                     <p>Update the harness online by improving harness structure, refining policy metadata, and handling unseen objects, tasks, scenarios, and environments.</p>
                 </div>
             </div>
+
+            <h3>The Memory Bridge</h3>
+            <p>
+                To hand control from one policy to the next without distribution mismatch, the memory bridge retrieves
+                task-relevant memories and learns a spatial distribution that anchors the handoff. Language and visual
+                inputs are encoded and matched against a multimodal memory bank by cosine similarity; the top-K retrieved
+                trajectories (anchored at step <em>t</em>) are fit with a 3D regression to produce a spatially consistent
+                bridge into the next policy's executable region.
+            </p>
+            <figure class="figure">
+                <img src="assets/images/memory_bridge.png" alt="Memory bridge pipeline: frozen language and visual encoders produce embeddings matched to a memory bank by cosine similarity; top-K retrieved trajectories are fit by 3D regression to form the memory bridge." loading="lazy">
+                <figcaption>
+                    <strong>Memory-bridge construction.</strong> Frozen language and visual encoders embed the instruction and
+                    observation; cosine similarity retrieves matching entries (text, image, robot trajectory) from the memory
+                    bank. The top-K retrieved trajectories, anchored at <em>t</em>, are fit by a <em>3D regression</em> to build
+                    the memory bridge that guides the next policy.
+                </figcaption>
+            </figure>
         </div>
     </section>
 
