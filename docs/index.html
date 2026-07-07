@@ -350,9 +350,13 @@
         <div class="container">
             <h2>Real Robot Experiments</h2>
             <p>
-                RoboHarness is deployed on real hardware across five long-horizon construction tasks, coordinating heterogeneous
-                policies through capability-aware routing and memory-bridge handoffs, and is further stress-tested under injected
-                disturbances.
+                RoboHarness is deployed on real hardware for long-horizon <strong>construction</strong> tasks — building a
+                <em>Bridge</em>, a <em>Taller Bridge</em>, a <em>Tower</em>, a <em>Chinese Character</em>, and a <em>Boat</em>
+                out of blocks. Each task requires coordinating heterogeneous policies through capability-aware routing and
+                memory-bridge handoffs: a VLA handles semantic, contact-rich manipulation (opening drawers, retrieving objects)
+                while a PDDL/task-and-motion planner assembles the precise target structure. To test robustness, we further
+                inject disturbances <em>mid-execution</em> — hiding blocks, undoing progress, adding distractors, and corrupting
+                perception — and measure whether the system recovers.
             </p>
 
             <figure class="figure">
@@ -360,7 +364,10 @@
                     <source src="assets/videos/real_robot_demo.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <figcaption><strong>Real-robot demo.</strong> RoboHarness orchestrating heterogeneous policies on real hardware.</figcaption>
+                <figcaption><strong>Real-robot demo — "build a Bridge" with a missing block.</strong> RoboHarness (1) receives
+                the task prompt and notices a required block is missing; (2) constructs a Memory Bridge into the VLA's
+                distribution; (3) the VLA opens the drawer and (4) takes out the missing block; (5) the PDDL planner then builds
+                the required structure — heterogeneous policies chained through memory-bridged handoffs.</figcaption>
             </figure>
 
             <div class="results-two-col">
