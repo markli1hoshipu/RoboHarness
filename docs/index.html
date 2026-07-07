@@ -238,12 +238,47 @@
         <div class="container">
             <h2>Results</h2>
             <p>
-                On the <strong>LIBERO-Plus</strong> benchmark, RoboHarness orchestrates heterogeneous policies to beat prior
-                state-of-the-art models <em>without any re-training or fine-tuning</em>. We report success rate under seven
-                perturbation categories (robot state, language, layout, background, sensor, camera, light) and the overall average.
+                RoboHarness orchestrates heterogeneous policies to beat prior state-of-the-art models
+                <em>without any re-training or fine-tuning</em>, on both the <strong>LIBERO-LoHo</strong> long-horizon suite
+                and the <strong>LIBERO-Plus</strong> perturbation benchmark, and an ablation confirms each component contributes.
             </p>
 
-            <h3>LIBERO-Plus benchmark — full evaluation</h3>
+            <h3>LIBERO-LoHo benchmark — long-horizon evaluation</h3>
+            <p>Five long-horizon tasks; each cell reports <strong>Q-score / success rate</strong> (%).</p>
+            <div class="table-scroll">
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Task 1</th><th>Task 2</th><th>Task 3</th><th>Task 4</th><th>Task 5</th><th>Average</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="highlight">
+                        <td><strong>RoboHarness (ours)</strong></td>
+                        <td class="best">100.0 / 100.0</td><td class="best">97.3 / 96.0</td><td class="best">98.7 / 96.0</td>
+                        <td class="best">94.7 / 92.0</td><td class="best">97.0 / 92.0</td><td class="best">97.5 / 95.2</td>
+                    </tr>
+                    <tr><td>H-WM-π0.5</td><td>98.0 / 94.0</td><td>86.7 / 60.0</td><td>74.0 / 46.0</td><td>70.7 / 42.0</td><td>95.0 / 82.0</td><td>84.9 / 64.8</td></tr>
+                    <tr><td>Logic-guided π0.5</td><td>95.3 / 86.0</td><td>84.7 / 58.0</td><td>54.7 / 16.0</td><td>39.3 / 4.0</td><td>92.0 / 78.0</td><td>73.2 / 48.4</td></tr>
+                    <tr><td>LLM-guided π0.5</td><td>84.7 / 54.0</td><td>80.7 / 42.0</td><td>68.0 / 24.0</td><td>41.3 / 4.0</td><td>59.5 / 10.0</td><td>66.8 / 26.8</td></tr>
+                    <tr><td>π0.5</td><td>66.0 / 4.0</td><td>73.3 / 24.0</td><td>54.7 / 4.0</td><td>44.7 / 0.0</td><td>38.0 / 0.0</td><td>55.3 / 6.4</td></tr>
+                    <tr><td>π0</td><td>54.0 / 0.0</td><td>62.0 / 28.0</td><td>44.0 / 0.0</td><td>31.3 / 0.0</td><td>34.0 / 0.0</td><td>45.1 / 5.6</td></tr>
+                    <tr><td>X-VLA</td><td>48.8 / 0.0</td><td>16.7 / 0.0</td><td>23.3 / 0.0</td><td>33.3 / 0.0</td><td>40.0 / 0.0</td><td>32.4 / 0.0</td></tr>
+                    <tr><td>Gr00t-N1.5</td><td>0.0 / 0.0</td><td>30.7 / 0.0</td><td>34.7 / 0.0</td><td>2.7 / 0.0</td><td>0.0 / 0.0</td><td>13.6 / 0.0</td></tr>
+                    <tr><td>OpenVLA-OFT</td><td>0.0 / 0.0</td><td>60.0 / 0.0</td><td>17.3 / 0.0</td><td>22.7 / 0.0</td><td>0.0 / 0.0</td><td>20.0 / 0.0</td></tr>
+                    <tr><td>OpenVLA</td><td>0.0 / 0.0</td><td>2.7 / 0.0</td><td>24.0 / 0.0</td><td>2.7 / 0.0</td><td>0.0 / 0.0</td><td>5.9 / 0.0</td></tr>
+                </tbody>
+            </table>
+            </div>
+            <p class="result-takeaway">
+                <strong>Takeaway:</strong> On long-horizon tasks RoboHarness reaches 95.2% average success (97.5% Q-score) —
+                far above the strongest baseline (H-WM-π0.5, 64.8%) — and is the only method to solve every task, while pure
+                VLA policies collapse to near-zero success. <span class="muted">Bold = highest per column.</span>
+            </p>
+
+            <h3>LIBERO-Plus benchmark — perturbation robustness</h3>
+            <p>Success rate (%) under seven perturbation categories, plus the overall average.</p>
             <div class="table-scroll">
             <table class="results-table">
                 <thead>
@@ -274,6 +309,30 @@
                 <strong>Takeaway:</strong> RoboHarness achieves the highest average (91.9%) and leads on every perturbation
                 category except Sensor (where Cosmos-Policy edges ahead at 92.7%) — a +6.2-point gain over the strongest
                 baseline (Pi05, 85.7%), with no task-specific re-training. <span class="muted">Bold = highest per column.</span>
+            </p>
+
+            <h3>Ablation study</h3>
+            <p>Removing each RoboHarness component (success rate and progress score, %).</p>
+            <div class="table-scroll">
+            <table class="results-table">
+                <thead>
+                    <tr><th>Configuration</th><th>Success Rate</th><th>Progress Score</th></tr>
+                </thead>
+                <tbody>
+                    <tr class="highlight"><td><strong>RoboHarness (full)</strong></td><td class="best">86.0%</td><td class="best">93.1%</td></tr>
+                    <tr><td>− Memory Bridge</td><td>60.4%</td><td>82.9%</td></tr>
+                    <tr><td>− Evolution Module</td><td>54.6%</td><td>74.9%</td></tr>
+                    <tr><td>Motion planner only</td><td>36.4%</td><td>71.8%</td></tr>
+                    <tr><td>Pi05 only</td><td>0.0%</td><td>28.5%</td></tr>
+                    <tr><td>RL-Open-VLA</td><td>0.0%</td><td>4.6%</td></tr>
+                </tbody>
+            </table>
+            </div>
+            <p class="result-takeaway">
+                <strong>Takeaway:</strong> Every component matters. Removing the Memory Bridge drops success 86.0% → 60.4%
+                and removing the Evolution Module → 54.6%; a motion planner alone reaches only 36.4%, and single-policy
+                baselines (Pi05, RL-Open-VLA) fail to complete the tasks (0% success) — confirming that heterogeneous
+                orchestration with memory-bridged handoffs drives the gains.
             </p>
         </div>
     </section>
