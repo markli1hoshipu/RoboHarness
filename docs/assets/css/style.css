@@ -783,6 +783,9 @@ footer a {
 .demo-gallery figure { margin: 0; }
 .demo-gallery video {
   width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
   border-radius: 10px;
   background: #000;
   box-shadow: 0 4px 14px rgba(15,23,42,0.12);
