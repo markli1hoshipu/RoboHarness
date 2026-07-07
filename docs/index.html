@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoboHarness: Memory-Driven Orchestration of Heterogeneous Robot Policies</title>
+    <meta name="description" content="RoboHarness: Memory-Driven Orchestration and Chaining of Heterogeneous Policies for Long-Horizon Robot Planning">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="site-switcher" aria-label="Switch project site">
+                <div class="logo">RoboHarness<span class="switcher-hint" aria-hidden="true">▾</span></div>
+                <div class="site-switcher-menu" role="menu">
+                    <div class="site-switcher-label">Switch project</div>
+                    <a href="./" class="active" role="menuitem">
+                        <span class="site-name">RoboHarness</span>
+                        <span class="site-tag">current</span>
+                    </a>
+                    <a href="https://markli1hoshipu.github.io/Plan_LLM/" role="menuitem">
+                        <span class="site-name">Self-CriTeach</span>
+                        <span class="site-tag">sibling project</span>
+                    </a>
+                </div>
+            </div>
+            <ul>
+                <li><a href="#abstract">Abstract</a></li>
+                <li><a href="#contributions">Contributions</a></li>
+                <li><a href="#method">Method</a></li>
+                <li><a href="#problem">Problem</a></li>
+                <li><a href="#demos">Demos</a></li>
+                <li><a href="#real-robot">Real Robot</a></li>
+                <li><a href="#code">Code</a></li>
+                <li><a href="#citation">Citation</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <h1>RoboHarness</h1>
+            <p class="subtitle">Memory-Driven Orchestration and Chaining of Heterogeneous<br>Policies for Long-Horizon Robot Planning</p>
+            <div class="venue">ICLR 2026 &middot; under review</div>
+
+            <div class="authors">
+                <span>Jinbang Huang¹</span>, <span>Yixin Xiao¹</span>, <span>Zhanguang Zhang¹</span>,
+                <span>Mark Coates²</span>, <span>Jianye Hao¹</span>, <span>Yingxue Zhang¹</span>
+                <br>
+                <em>¹Huawei Noah's Ark Lab, ²McGill University</em>
+            </div>
+
+            <div class="hero-buttons">
+                <a href="papers/roboharness.pdf" class="btn btn-secondary">📑 Paper (PDF)</a>
+                <a href="https://github.com/markli1hoshipu/RoboHarness" class="btn btn-secondary">💻 Code</a>
+                <a href="#citation" class="btn btn-secondary">📚 Cite</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Abstract Section -->
+    <section id="abstract">
+        <div class="container">
+            <h2>Abstract</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8;">
+                Long-horizon robotic tasks require instruction following, environmental generalization, logical consistency, and robustness, yet no single policy reliably satisfies all these requirements. Existing policies instead exhibit complementary but bounded capabilities, motivating the joint use of multiple heterogeneous policies. The central challenge is therefore not planning alone, but <strong>decomposing tasks and assigning subtasks according to policy capabilities</strong>. However, existing long-horizon planning methods are largely built on homogeneous predefined skills with fixed applicability, and therefore lack the ability to reason about uncertain policy boundaries, adaptively route subtasks, or handle distribution mismatch across policy handoffs.
+            </p>
+            <p style="font-size: 1.1rem; line-height: 1.8;">
+                We propose <strong>RoboHarness</strong>, a unified framework that orchestrates heterogeneous robot policies as reusable agentic skill modules. RoboHarness incorporates auxiliary modules that characterize policy capability boundaries and mediate inter-policy inputs and outputs. It can coordinate independently trained policies — such as VLAs and RL policies — as well as hand-designed systems such as task-and-motion planners, despite differences in assumptions, representations, and execution regimes. Experiments on public benchmarks and real robots show substantial gains in long-horizon planning, zero-shot generalization, and out-of-distribution robustness.
+            </p>
+        </div>
+    </section>
+
+    <!-- Key Contributions -->
+    <section id="contributions">
+        <div class="container">
+            <h2>Key Contributions</h2>
+            <div class="contribution-grid contribution-grid-3">
+                <div class="contribution-card">
+                    <span class="icon">🧩</span>
+                    <h3>Heterogeneous Policy Orchestration</h3>
+                    <p>A unified framework for zero-shot long-horizon planning that encapsulates heterogeneous robot policies as reusable agentic skills and augments them with auxiliary modules for capability characterization and inter-policy mediation — enabling capability-aware task decomposition, adaptive policy routing, and spatially consistent handoff under uncertain capability boundaries.</p>
+                </div>
+
+                <div class="contribution-card">
+                    <span class="icon">🌉</span>
+                    <h3>The Memory Bridge</h3>
+                    <p>A plug-and-play inter-policy chaining technique that combines memory retrieval and spatial distribution learning to preserve stable inter-policy handoffs — without any additional joint retraining of the coordinated policies.</p>
+                </div>
+
+                <div class="contribution-card">
+                    <span class="icon">🤖</span>
+                    <h3>Empirical Effectiveness</h3>
+                    <p>Demonstrated on zero-shot long-horizon tasks by orchestrating heterogeneous policies including VLAs, TAMP systems, and RL policies. Evaluations across multiple benchmarks and real robots show improved long-horizon consistency, out-of-distribution resilience, and zero-shot robustness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Method Overview -->
+    <section id="method">
+        <div class="container">
+            <h2>Method Overview</h2>
+            <p>
+                RoboHarness assumes access to existing robot control policies and auxiliary tools, all packaged as callable agentic skills for a coding agent. Given a high-level instruction, it decomposes the task, routes each subtask to a policy operating within its capability region, and bridges the handoff between successive policies to preserve spatial consistency.
+            </p>
+
+            <div class="pipeline">
+                <div class="stage">
+                    <span class="icon">🗣️</span>
+                    <h4>Instruction</h4>
+                    <p>High-level task goal <em>G(I)</em> and initial observation context.</p>
+                </div>
+                <div class="arrow">→</div>
+                <div class="stage">
+                    <span class="icon">🧭</span>
+                    <h4>Capability-Aware Decomposition</h4>
+                    <p>Split the task into subtasks and reason about which policy can reliably execute each.</p>
+                </div>
+                <div class="arrow">→</div>
+                <div class="stage">
+                    <span class="icon">🔀</span>
+                    <h4>Policy Routing</h4>
+                    <p>Assign each subtask to a heterogeneous policy — VLA, RL, or TAMP.</p>
+                </div>
+                <div class="arrow">→</div>
+                <div class="stage">
+                    <span class="icon">🌉</span>
+                    <h4>Memory Bridge</h4>
+                    <p>Retrieve in-distribution memory to construct a spatially consistent handoff to the next policy.</p>
+                </div>
+                <div class="arrow">→</div>
+                <div class="stage">
+                    <span class="icon">✅</span>
+                    <h4>Goal Reached</h4>
+                    <p>Final context satisfies <em>o<sub>T</sub> ⊨ G(I)</em>.</p>
+                </div>
+            </div>
+
+            <h3>Auxiliary Tools</h3>
+            <p>Independently trained or hand-designed policies are augmented by three categories of callable tools:</p>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <h4>🔍 Understanding Tools</h4>
+                    <p>Extract perceptual, spatial, and semantic information from the environment to support task decomposition and policy selection.</p>
+                </div>
+                <div class="tool-card">
+                    <h4>🧠 Memory Tools</h4>
+                    <p>Retrieve and update multimodal memories to support decision making and memory-bridge construction across policy handoffs.</p>
+                </div>
+                <div class="tool-card">
+                    <h4>🌱 Evolution Tools</h4>
+                    <p>Update the harness online by improving harness structure, refining policy metadata, and handling unseen objects, tasks, scenarios, and environments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Definition -->
+    <section id="problem">
+        <div class="container">
+            <h2>Problem: Policy Capability-Aware Planning (PCAP)</h2>
+            <p>
+                We consider zero-shot long-horizon planning with a library of heterogeneous policies
+                <strong>Π = {π₁, …, π<sub>N</sub>}</strong>. Each policy π<sub>i</sub> is an executable module with its own
+                input space 𝒳<sub>i</sub>, output space 𝒴<sub>i</sub>, and <strong>capability region</strong>
+                𝒞<sub>i</sub> ⊆ 𝒪 × 𝒢 — the set of (observation-context, subtask) pairs it can reliably execute.
+                A memory bank 𝓜 = {𝓜₁, …, 𝓜<sub>N</sub>} stores in-distribution execution data (demonstrations,
+                behavior-cloning data, or rollout trajectories) for each policy.
+            </p>
+            <ul class="method-steps">
+                <li><strong>Decompose.</strong> Turn instruction <em>I</em> into a subtask sequence τ = (g₁, …, g<sub>T</sub>).</li>
+                <li><strong>Assign.</strong> Choose a policy for each subtask, ρ = (π<sub>k₁</sub>, …, π<sub>k<sub>T</sub></sub>), with each applied inside its capability region: (o<sub>t</sub>, g<sub>t</sub>) ∈ 𝒞<sub>k<sub>t</sub></sub>.</li>
+                <li><strong>Bridge.</strong> Build handoff representations z = (z₁, …, z<sub>T−1</sub>) so one policy's terminal state lands in the next policy's executable region.</li>
+                <li><strong>Objective.</strong> Maximize P(o<sub>T</sub> ⊨ G(I) | o₀, I, Π, 𝓜) subject to capability and memory-conditioned handoff-compatibility constraints.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Demos -->
+    <section id="demos">
+        <div class="container">
+            <h2>Demonstrations</h2>
+            <p>Long-horizon rollouts of RoboHarness orchestrating heterogeneous policies on real hardware.</p>
+            <div class="demo-gallery">
+                <figure><video controls preload="metadata" playsinline muted loop><source src="assets/videos/1.mp4" type="video/mp4"></video><figcaption>Rollout 1</figcaption></figure>
+                <figure><video controls preload="metadata" playsinline muted loop><source src="assets/videos/2.mp4" type="video/mp4"></video><figcaption>Rollout 2</figcaption></figure>
+                <figure><video controls preload="metadata" playsinline muted loop><source src="assets/videos/3.mp4" type="video/mp4"></video><figcaption>Rollout 3</figcaption></figure>
+                <figure><video controls preload="metadata" playsinline muted loop><source src="assets/videos/4.mp4" type="video/mp4"></video><figcaption>Rollout 4</figcaption></figure>
+                <figure><video controls preload="metadata" playsinline muted loop><source src="assets/videos/5.mp4" type="video/mp4"></video><figcaption>Rollout 5</figcaption></figure>
+                <figure><video controls preload="metadata" playsinline muted loop><source src="assets/videos/6.mp4" type="video/mp4"></video><figcaption>Rollout 6</figcaption></figure>
+                <figure><video controls preload="metadata" playsinline muted loop><source src="assets/videos/7.mp4" type="video/mp4"></video><figcaption>Rollout 7</figcaption></figure>
+                <figure><video controls preload="metadata" playsinline muted loop><source src="assets/videos/8.mp4" type="video/mp4"></video><figcaption>Rollout 8</figcaption></figure>
+                <figure><video controls preload="metadata" playsinline muted loop><source src="assets/videos/9.mp4" type="video/mp4"></video><figcaption>Rollout 9</figcaption></figure>
+            </div>
+            <div class="note">
+                <strong>Note:</strong> video captions are placeholders (<code>Rollout 1–9</code>). Tell me the task each clip shows and I'll label them (e.g. Tower of Hanoi, Bridge Building, Burger, Stack).
+            </div>
+        </div>
+    </section>
+
+    <!-- Real Robot Experiments -->
+    <section id="real-robot">
+        <div class="container">
+            <h2>Real Robot Experiments</h2>
+            <p>
+                RoboHarness is deployed on real hardware across four long-horizon manipulation tasks, coordinating heterogeneous policies through capability-aware routing and memory-bridge handoffs.
+            </p>
+            <figure class="figure">
+                <img src="assets/images/real_robot_tasks.png" alt="Four real-robot tasks: Tower of Hanoi, Bridge Building, Burger, and Stack." loading="lazy">
+                <figcaption>
+                    <strong>Real-robot task suite.</strong> (a) Tower of Hanoi, (b) Bridge Building, (c) Burger, (d) Stack —
+                    executed on Franka and UR5e arms.
+                </figcaption>
+            </figure>
+            <div class="note">
+                <strong>Results pending.</strong> The experiments section of the paper is still in progress, so no quantitative
+                tables are shown here to avoid reporting unverified numbers. Once the benchmark and real-robot success rates are
+                finalized, drop them in and I'll add the results tables in the Self-CriTeach style.
+            </div>
+        </div>
+    </section>
+
+    <!-- Code & Resources -->
+    <section id="code">
+        <div class="container">
+            <h2>Code & Resources</h2>
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <span class="icon">💻</span>
+                    <h3>GitHub Repository</h3>
+                    <p>Implementation, orchestration harness, and auxiliary tools. <em>(Repository is being populated.)</em></p>
+                    <a href="https://github.com/markli1hoshipu/RoboHarness" class="btn btn-primary">View Code</a>
+                </div>
+                <div class="resource-card">
+                    <span class="icon">📑</span>
+                    <h3>Paper</h3>
+                    <p>Full ICLR 2026 submission with method, problem formulation, and experiments.</p>
+                    <a href="papers/roboharness.pdf" class="btn btn-primary">Read PDF</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Citation -->
+    <section id="citation">
+        <div class="container">
+            <h2>Citation</h2>
+            <p>If you find this work useful, please cite:</p>
+            <div class="citation-box">
+                <button class="copy-button" onclick="copyBibtex()">Copy BibTeX</button>
+                <pre><code id="bibtex">@inproceedings{huang2026roboharness,
+  title     = {RoboHarness: Memory-Driven Orchestration and Chaining of Heterogeneous Policies for Long-Horizon Robot Planning},
+  author    = {Huang, Jinbang and Xiao, Yixin and Zhang, Zhanguang and Coates, Mark and Hao, Jianye and Zhang, Yingxue},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2026}
+}</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section id="team">
+        <div class="container">
+            <h2>Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <h4>Jinbang Huang</h4>
+                    <p class="affiliation">Huawei Noah's Ark Lab</p>
+                </div>
+                <div class="team-member">
+                    <h4>Yixin Xiao</h4>
+                    <p class="affiliation">Huawei Noah's Ark Lab</p>
+                </div>
+                <div class="team-member">
+                    <h4>Zhanguang Zhang</h4>
+                    <p class="affiliation">Huawei Noah's Ark Lab</p>
+                </div>
+                <div class="team-member">
+                    <h4>Mark Coates</h4>
+                    <p class="affiliation">McGill University</p>
+                </div>
+                <div class="team-member">
+                    <h4>Jianye Hao</h4>
+                    <p class="affiliation">Huawei Noah's Ark Lab</p>
+                </div>
+                <div class="team-member">
+                    <h4>Yingxue Zhang</h4>
+                    <p class="affiliation">Huawei Noah's Ark Lab</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 The authors. All rights reserved.</p>
+            <p>
+                <a href="papers/roboharness.pdf">PDF</a> |
+                <a href="https://github.com/markli1hoshipu/RoboHarness">GitHub</a> |
+                <a href="https://markli1hoshipu.github.io/Plan_LLM/">Self-CriTeach</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function copyBibtex() {
+            const bibtex = document.getElementById('bibtex').textContent;
+            navigator.clipboard.writeText(bibtex).then(() => {
+                const button = document.querySelector('.copy-button');
+                button.textContent = '✓ Copied!';
+                setTimeout(() => { button.textContent = 'Copy BibTeX'; }, 2000);
+            });
+        }
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+            });
+        });
+    </script>
+</body>
+</html>
