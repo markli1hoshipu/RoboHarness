@@ -34,6 +34,7 @@
                 <li><a href="#contributions">Contributions</a></li>
                 <li><a href="#method">Method</a></li>
                 <li><a href="#problem">Problem</a></li>
+                <li><a href="#results">Results</a></li>
                 <li><a href="#real-robot">Real Robot</a></li>
                 <li><a href="#code">Code</a></li>
                 <li><a href="#citation">Citation</a></li>
@@ -232,12 +233,59 @@
         </div>
     </section>
 
+    <!-- Results -->
+    <section id="results">
+        <div class="container">
+            <h2>Results</h2>
+            <p>
+                On the <strong>LIBERO-Plus</strong> benchmark, RoboHarness orchestrates heterogeneous policies to beat prior
+                state-of-the-art models <em>without any re-training or fine-tuning</em>. We report success rate under seven
+                perturbation categories (robot state, language, layout, background, sensor, camera, light) and the overall average.
+            </p>
+
+            <h3>LIBERO-Plus benchmark — full evaluation</h3>
+            <div class="table-scroll">
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Robot State</th><th>Language</th><th>Layout</th><th>Background</th>
+                        <th>Sensor</th><th>Camera</th><th>Light</th><th>Average</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="highlight">
+                        <td><strong>RoboHarness (ours)</strong></td>
+                        <td class="best">90.4%</td><td class="best">97.0%</td><td class="best">86.8%</td><td class="best">97.1%</td>
+                        <td>90.3%</td><td class="best">87.6%</td><td class="best">97.4%</td><td class="best">91.9%</td>
+                    </tr>
+                    <tr><td>Pi05</td><td>75.4%</td><td>85.6%</td><td>85.7%</td><td>94.6%</td><td>89.7%</td><td>75.4%</td><td>96.9%</td><td>85.7%</td></tr>
+                    <tr><td>Pi0</td><td>61.0%</td><td>63.5%</td><td>76.4%</td><td>79.0%</td><td>80.1%</td><td>61.0%</td><td>85.0%</td><td>53.6%</td></tr>
+                    <tr><td>UniVLA</td><td>46.2%</td><td>77.6%</td><td>31.9%</td><td>81.0%</td><td>21.2%</td><td>1.8%</td><td>69.0%</td><td>42.9%</td></tr>
+                    <tr><td>OpenVLA-oft</td><td>21.7%</td><td>81.0%</td><td>68.7%</td><td>91.0%</td><td>78.6%</td><td>55.6%</td><td>92.7%</td><td>67.9%</td></tr>
+                    <tr><td>X-VLA</td><td>89.7%</td><td>75.7%</td><td>71.8%</td><td>96.0%</td><td>62.7%</td><td>23.4%</td><td>88.2%</td><td>71.4%</td></tr>
+                    <tr><td>Cosmos-Policy</td><td>63.3%</td><td>81.7%</td><td>82.2%</td><td>88.9%</td><td class="best">92.7%</td><td>75.8%</td><td>96.5%</td><td>82.2%</td></tr>
+                    <tr><td>FAST-WAM</td><td>44.5%</td><td>68.9%</td><td>60.7%</td><td>53.7%</td><td>37.7%</td><td>16.4%</td><td>78.2%</td><td>51.5%</td></tr>
+                    <tr><td>LingBot-VA</td><td>83.0%</td><td>86.4%</td><td>76.2%</td><td>53.1%</td><td>64.4%</td><td>40.9%</td><td>82.3%</td><td>69.5%</td></tr>
+                </tbody>
+            </table>
+            </div>
+            <p class="result-takeaway">
+                <strong>Takeaway:</strong> RoboHarness achieves the highest average (91.9%) and leads on every perturbation
+                category except Sensor (where Cosmos-Policy edges ahead at 92.7%) — a +6.2-point gain over the strongest
+                baseline (Pi05, 85.7%), with no task-specific re-training. <span class="muted">Bold = highest per column.</span>
+            </p>
+        </div>
+    </section>
+
     <!-- Real Robot Experiments -->
     <section id="real-robot">
         <div class="container">
             <h2>Real Robot Experiments</h2>
             <p>
-                RoboHarness is deployed on real hardware across four long-horizon manipulation tasks, coordinating heterogeneous policies through capability-aware routing and memory-bridge handoffs.
+                RoboHarness is deployed on real hardware across five long-horizon construction tasks, coordinating heterogeneous
+                policies through capability-aware routing and memory-bridge handoffs, and is further stress-tested under injected
+                disturbances.
             </p>
 
             <figure class="figure">
@@ -248,11 +296,42 @@
                 <figcaption><strong>Real-robot demo.</strong> RoboHarness orchestrating heterogeneous policies on real hardware.</figcaption>
             </figure>
 
-            <div class="note">
-                <strong>Results pending.</strong> The experiments section of the paper is still in progress, so no quantitative
-                tables are shown here to avoid reporting unverified numbers. Once the benchmark and real-robot success rates are
-                finalized, drop them in and I'll add the results tables in the Self-CriTeach style.
+            <div class="results-two-col">
+                <div>
+                    <h3>Task success rate</h3>
+                    <div class="table-scroll">
+                    <table class="results-table">
+                        <thead><tr><th>Task Request</th><th>Success Rate</th></tr></thead>
+                        <tbody>
+                            <tr><td>Bridge</td><td>86.7%</td></tr>
+                            <tr><td>Taller Bridge</td><td>66.7%</td></tr>
+                            <tr><td>Tower</td><td class="best">93.3%</td></tr>
+                            <tr><td>Chinese Character</td><td>80.0%</td></tr>
+                            <tr><td>Boat</td><td>86.7%</td></tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+                <div>
+                    <h3>Robustness to injected disturbance</h3>
+                    <div class="table-scroll">
+                    <table class="results-table">
+                        <thead><tr><th>Injected Disturbance</th><th>Success Rate</th></tr></thead>
+                        <tbody>
+                            <tr><td>Hide Blocks</td><td>66.7%</td></tr>
+                            <tr><td>Break Progress</td><td>80.0%</td></tr>
+                            <tr><td>Distracting Blocks</td><td class="best">86.7%</td></tr>
+                            <tr><td>Perception Noise</td><td>73.3%</td></tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
             </div>
+            <p class="result-takeaway">
+                <strong>Takeaway:</strong> RoboHarness completes long-horizon construction tasks on real hardware (up to 93.3%
+                on Tower) and stays robust when the environment is actively disturbed mid-execution — recovering from hidden
+                blocks, undone progress, distractors, and perception noise via memory-bridged re-planning.
+            </p>
         </div>
     </section>
 

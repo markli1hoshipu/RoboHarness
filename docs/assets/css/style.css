@@ -804,3 +804,11 @@ footer a {
   margin: 1.5rem 0;
   font-size: 0.95rem;
 }
+
+/* two-column layout for the real-robot result tables */
+.results-two-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem 2rem;
+  align-items: start;
+}
