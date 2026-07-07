@@ -300,27 +300,26 @@
 
             <h3>Ablation study</h3>
             <p>Removing each RoboHarness component (success rate and progress score, %).</p>
-            <div class="table-scroll">
-            <table class="results-table">
-                <thead>
-                    <tr><th>Configuration</th><th>Success Rate</th><th>Progress Score</th></tr>
-                </thead>
-                <tbody>
-                    <tr class="highlight"><td><strong>RoboHarness (full)</strong></td><td class="best">86.0%</td><td class="best">93.1%</td></tr>
-                    <tr><td>− Memory Bridge</td><td>60.4%</td><td>82.9%</td></tr>
-                    <tr><td>− Evolution Module</td><td>54.6%</td><td>74.9%</td></tr>
-                    <tr><td>Motion planner only</td><td>36.4%</td><td>71.8%</td></tr>
-                    <tr><td>Pi05 only</td><td>0.0%</td><td>28.5%</td></tr>
-                    <tr><td>RL-Open-VLA</td><td>0.0%</td><td>4.6%</td></tr>
-                </tbody>
-            </table>
-            </div>
+            <figure class="figure">
+                <img src="assets/images/ablation_bar.png" alt="Ablation bar chart: success rate and progress score for the full model versus removing the memory bridge, removing the evolution module, motion-planner-only, and single-policy baselines." loading="lazy">
+            </figure>
             <p class="result-takeaway">
                 <strong>Takeaway:</strong> Every component matters. Removing the Memory Bridge drops success 86.0% → 60.4%
                 and removing the Evolution Module → 54.6%; a motion planner alone reaches only 36.4%, and single-policy
                 baselines (Pi05, RL-Open-VLA) fail to complete the tasks (0% success) — confirming that heterogeneous
                 orchestration with memory-bridged handoffs drives the gains.
             </p>
+
+            <h3>Policy usage across noise types</h3>
+            <p>How RoboHarness routes each subtask between the VLA and the motion planner, per perturbation type.</p>
+            <figure class="figure">
+                <img src="assets/images/policy_usage_ratio.png" alt="Stacked horizontal bar chart of VLA vs. motion-planner usage ratio across seven noise types, sorted by VLA share." loading="lazy">
+                <figcaption>
+                    <strong>Policy usage ratio.</strong> Under appearance-style perturbations (light, background, layout) the
+                    orchestrator leans on the VLA (&gt;89%), while under geometric/sensor perturbations (sensor noise, initial
+                    pose) it shifts substantially to the motion planner — evidence of capability-aware routing.
+                </figcaption>
+            </figure>
         </div>
     </section>
 
