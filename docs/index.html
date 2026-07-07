@@ -114,7 +114,18 @@
         <div class="container">
             <h2>Method Overview</h2>
             <p>
-                RoboHarness assumes access to existing robot control policies and auxiliary tools, all packaged as callable agentic skills for a coding agent. Given a high-level instruction, it decomposes the task, routes each subtask to a policy operating within its capability region, and bridges the handoff between successive policies to preserve spatial consistency.
+                Modern robot systems contain many useful policies, but they are rarely designed to work together. A VLA is
+                strong at language-conditioned manipulation but weak under geometric precision; a task-and-motion planner is
+                precise and logically consistent but brittle when perception or object semantics are uncertain; an RL policy
+                solves a narrow control subproblem but fails outside its training distribution. Naively chaining them is
+                unreliable, because after one policy finishes a subtask the resulting scene may be valid for the overall task
+                yet still <em>incompatible</em> with the next policy's expected input distribution.
+            </p>
+            <p>
+                RoboHarness treats this as the central long-horizon problem: not only deciding <em>what</em> should happen next,
+                but <em>which policy</em> should do it and <em>how</em> to make the handoff executable. It wraps each
+                heterogeneous policy as a callable agentic skill with policy-specific metadata, and uses auxiliary skills to
+                identify capability boundaries and bridge transitions.
             </p>
 
             <figure class="figure">
@@ -127,63 +138,52 @@
                 </figcaption>
             </figure>
 
-            <div class="pipeline">
-                <div class="stage">
-                    <span class="icon">🗣️</span>
-                    <h4>Instruction</h4>
-                    <p>High-level task goal <em>G(I)</em> and initial observation context.</p>
-                </div>
-                <div class="arrow">→</div>
-                <div class="stage">
-                    <span class="icon">🧭</span>
-                    <h4>Capability-Aware Decomposition</h4>
-                    <p>Split the task into subtasks and reason about which policy can reliably execute each.</p>
-                </div>
-                <div class="arrow">→</div>
-                <div class="stage">
-                    <span class="icon">🔀</span>
-                    <h4>Policy Routing</h4>
-                    <p>Assign each subtask to a heterogeneous policy — VLA, RL, or TAMP.</p>
-                </div>
-                <div class="arrow">→</div>
-                <div class="stage">
-                    <span class="icon">🌉</span>
-                    <h4>Memory Bridge</h4>
-                    <p>Retrieve in-distribution memory to construct a spatially consistent handoff to the next policy.</p>
-                </div>
-                <div class="arrow">→</div>
-                <div class="stage">
-                    <span class="icon">✅</span>
-                    <h4>Goal Reached</h4>
-                    <p>Final context satisfies <em>o<sub>T</sub> ⊨ G(I)</em>.</p>
-                </div>
-            </div>
+            <h3>Execution loop</h3>
+            <p>During execution, RoboHarness performs six steps:</p>
+            <ul class="method-steps">
+                <li><strong>Observe context.</strong> Take in the current multimodal context — image observations, instruction text, estimated object poses, robot state, and execution history.</li>
+                <li><strong>Extract signals.</strong> Use auxiliary skills to extract task-relevant signals for capability reasoning: visual-semantic similarity, object-pose feasibility, robot-state compatibility, action confidence, and environment quality.</li>
+                <li><strong>Reason about capability boundaries.</strong> Compare each candidate policy's memory and capability region against the current task context.</li>
+                <li><strong>Decompose &amp; assign.</strong> Decompose the instruction into subtasks according to what the available modules can reliably execute, and assign each to a suitable policy (VLA, task-and-motion planner, RL policy, grasping module, or navigation component).</li>
+                <li><strong>Construct a Memory Bridge.</strong> At each policy transition, retrieve in-distribution execution memories and estimate a spatially compatible handoff state for the next policy.</li>
+                <li><strong>Execute &amp; adapt.</strong> Execute, monitor, retry, reroute, and update memory when the plan becomes invalid, the environment changes, or a capability mismatch is detected.</li>
+            </ul>
 
-            <h3>Auxiliary Tools</h3>
-            <p>Independently trained or hand-designed policies are augmented by three categories of callable tools:</p>
+            <h3>Auxiliary Skill Modules</h3>
+            <p>Three categories of auxiliary skills support the orchestration process. They do not replace the robot policies — they provide evidence for routing and handoff decisions.</p>
             <div class="tool-grid">
                 <div class="tool-card">
-                    <h4>🔍 Understanding Tools</h4>
-                    <p>Extract perceptual, spatial, and semantic information from the environment to support task decomposition and policy selection.</p>
+                    <h4>🔍 Understand Skills</h4>
+                    <p>Extract decision-relevant information from multimodal inputs — semantic object information, visual similarity, image quality, scene layout, pose estimates, and robot-state compatibility — as evidence for routing and handoffs.</p>
                 </div>
                 <div class="tool-card">
-                    <h4>🧠 Memory Tools</h4>
-                    <p>Retrieve and update multimodal memories to support decision making and memory-bridge construction across policy handoffs.</p>
+                    <h4>🧠 Memory Skills</h4>
+                    <p>Retrieve and update policy-specific execution memories: demonstrations, behavior-cloning data, rollout trajectories, observations, prompts, end-effector poses, joint states, and execution traces — used to gauge context compatibility and build handoffs.</p>
                 </div>
                 <div class="tool-card">
-                    <h4>🌱 Evolution Tools</h4>
-                    <p>Update the harness online by improving harness structure, refining policy metadata, and handling unseen objects, tasks, scenarios, and environments.</p>
+                    <h4>🌱 Evolution Skills</h4>
+                    <p>Adapt the harness online — refine policy metadata, update routing rules, handle unseen objects or task variants, adjust bridge construction, and trigger retry or rerouting when evidence shows the selected policy is no longer appropriate.</p>
                 </div>
             </div>
 
             <h3>The Memory Bridge</h3>
             <p>
-                To hand control from one policy to the next without distribution mismatch, the memory bridge retrieves
-                task-relevant memories and learns a spatial distribution that anchors the handoff. Language and visual
-                inputs are encoded and matched against a multimodal memory bank by cosine similarity; the top-K retrieved
-                trajectories (anchored at step <em>t</em>) are fit with a 3D regression to produce a spatially consistent
-                bridge into the next policy's executable region.
+                The Memory Bridge is the key mechanism for chaining heterogeneous policies <em>without joint retraining</em>;
+                its purpose is to reduce distribution mismatch at the moment execution transfers from one policy to another.
+                For each policy, RoboHarness maintains a memory bank of in-distribution execution data (training data and
+                rollout history). When a handoff is required, the current instruction and observation are encoded by language
+                and visual encoders and compared against the memory bank by cosine similarity. The top retrieved examples
+                reveal which states, object poses, end-effector configurations, and trajectories are compatible with the next
+                policy; RoboHarness then fits a spatial distribution over feasible handoff states and uses it to validate,
+                adjust, or reconstruct the transition into that policy's executable region.
             </p>
+            <p>In practice the bridge supports several handoff behaviors:</p>
+            <ul class="method-steps">
+                <li><strong>Validate.</strong> Confirm the current state is already suitable for the next policy.</li>
+                <li><strong>Adjust.</strong> Nudge an object or robot pose before invoking the next policy.</li>
+                <li><strong>Fallback.</strong> Select a fallback trajectory or retry from a nearby compatible state.</li>
+                <li><strong>Reroute.</strong> Switch to a different policy when bridge confidence is low.</li>
+            </ul>
             <figure class="figure">
                 <img src="assets/images/memory_bridge.png" alt="Memory bridge pipeline: frozen language and visual encoders produce embeddings matched to a memory bank by cosine similarity; top-K retrieved trajectories are fit by 3D regression to form the memory bridge." loading="lazy">
                 <figcaption>
@@ -214,6 +214,16 @@
                 <li><strong>Bridge.</strong> Build handoff representations z = (z₁, …, z<sub>T−1</sub>) so one policy's terminal state lands in the next policy's executable region.</li>
                 <li><strong>Objective.</strong> Maximize P(o<sub>T</sub> ⊨ G(I) | o₀, I, Π, 𝓜) subject to capability and memory-conditioned handoff-compatibility constraints.</li>
             </ul>
+            <p style="margin-top:1.5rem;">Plainly, RoboHarness asks three questions at every step:</p>
+            <ol style="font-size:1.05rem; line-height:1.8; padding-left:1.5rem;">
+                <li>What subtask should be attempted next?</li>
+                <li>Which policy is most likely to execute it under the current context?</li>
+                <li>How should the scene, state, or representation be adjusted so the next policy receives an input it can reliably handle?</li>
+            </ol>
+            <p style="margin-top:1rem;">
+                This shifts long-horizon planning from fixed skill sequencing to <strong>adaptive orchestration under uncertain
+                policy boundaries</strong>.
+            </p>
         </div>
     </section>
 
@@ -222,9 +232,11 @@
         <div class="container">
             <h2>Results</h2>
             <p>
-                RoboHarness orchestrates heterogeneous policies to beat prior state-of-the-art models
-                <em>without any re-training or fine-tuning</em>, on both the <strong>LIBERO-LoHo</strong> long-horizon suite
-                and the <strong>LIBERO-Plus</strong> perturbation benchmark, and an ablation confirms each component contributes.
+                RoboHarness is evaluated along five complementary axes — <strong>long-horizon task completion</strong>,
+                <strong>perturbation robustness</strong>, <strong>ablation of system components</strong>,
+                <strong>adaptive policy usage</strong>, and <strong>real-robot deployment</strong> — testing whether it can
+                coordinate heterogeneous policies, preserve handoff consistency, and recover when the scene changes. It beats
+                prior state-of-the-art models <em>without any re-training or fine-tuning</em>.
             </p>
 
             <h3>LIBERO-LoHo benchmark — long-horizon evaluation</h3>
