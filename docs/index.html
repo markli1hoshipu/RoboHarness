@@ -29,11 +29,11 @@
                 </div>
             </div>
             <ul>
+                <li><a href="#demos">Demos</a></li>
                 <li><a href="#abstract">Abstract</a></li>
                 <li><a href="#contributions">Contributions</a></li>
                 <li><a href="#method">Method</a></li>
                 <li><a href="#problem">Problem</a></li>
-                <li><a href="#demos">Demos</a></li>
                 <li><a href="#real-robot">Real Robot</a></li>
                 <li><a href="#code">Code</a></li>
                 <li><a href="#citation">Citation</a></li>
@@ -56,12 +56,34 @@
             </div>
 
             <div class="hero-buttons">
-                <a href="papers/roboharness.pdf" class="btn btn-secondary">📑 Paper (PDF)</a>
+                <span class="btn btn-secondary" style="opacity:.55;cursor:not-allowed;" aria-disabled="true" title="Paper coming soon">📑 Paper — coming soon</span>
                 <a href="https://github.com/markli1hoshipu/RoboHarness" class="btn btn-secondary">💻 Code</a>
                 <a href="#citation" class="btn btn-secondary">📚 Cite</a>
             </div>
         </div>
     </div>
+
+    <!-- Demos -->
+    <section id="demos" class="demo-section">
+        <div class="container">
+            <h2>Demonstrations</h2>
+            <p>Long-horizon rollouts of RoboHarness orchestrating heterogeneous policies on real hardware.</p>
+            <div class="demo-gallery">
+                <figure><video controls preload="metadata" playsinline muted loop><source src="assets/videos/1.mp4" type="video/mp4"></video><figcaption>Rollout 1</figcaption></figure>
+                <figure><video controls preload="metadata" playsinline muted loop><source src="assets/videos/2.mp4" type="video/mp4"></video><figcaption>Rollout 2</figcaption></figure>
+                <figure><video controls preload="metadata" playsinline muted loop><source src="assets/videos/3.mp4" type="video/mp4"></video><figcaption>Rollout 3</figcaption></figure>
+                <figure><video controls preload="metadata" playsinline muted loop><source src="assets/videos/4.mp4" type="video/mp4"></video><figcaption>Rollout 4</figcaption></figure>
+                <figure><video controls preload="metadata" playsinline muted loop><source src="assets/videos/5.mp4" type="video/mp4"></video><figcaption>Rollout 5</figcaption></figure>
+                <figure><video controls preload="metadata" playsinline muted loop><source src="assets/videos/6.mp4" type="video/mp4"></video><figcaption>Rollout 6</figcaption></figure>
+                <figure><video controls preload="metadata" playsinline muted loop><source src="assets/videos/7.mp4" type="video/mp4"></video><figcaption>Rollout 7</figcaption></figure>
+                <figure><video controls preload="metadata" playsinline muted loop><source src="assets/videos/8.mp4" type="video/mp4"></video><figcaption>Rollout 8</figcaption></figure>
+                <figure><video controls preload="metadata" playsinline muted loop><source src="assets/videos/9.mp4" type="video/mp4"></video><figcaption>Rollout 9</figcaption></figure>
+            </div>
+            <div class="note">
+                <strong>Note:</strong> video captions are placeholders (<code>Rollout 1–9</code>). Tell me the task each clip shows and I'll label them (e.g. Tower of Hanoi, Bridge Building, Burger, Stack).
+            </div>
+        </div>
+    </section>
 
     <!-- Abstract Section -->
     <section id="abstract">
@@ -182,28 +204,6 @@
         </div>
     </section>
 
-    <!-- Demos -->
-    <section id="demos">
-        <div class="container">
-            <h2>Demonstrations</h2>
-            <p>Long-horizon rollouts of RoboHarness orchestrating heterogeneous policies on real hardware.</p>
-            <div class="demo-gallery">
-                <figure><video controls preload="metadata" playsinline muted loop><source src="assets/videos/1.mp4" type="video/mp4"></video><figcaption>Rollout 1</figcaption></figure>
-                <figure><video controls preload="metadata" playsinline muted loop><source src="assets/videos/2.mp4" type="video/mp4"></video><figcaption>Rollout 2</figcaption></figure>
-                <figure><video controls preload="metadata" playsinline muted loop><source src="assets/videos/3.mp4" type="video/mp4"></video><figcaption>Rollout 3</figcaption></figure>
-                <figure><video controls preload="metadata" playsinline muted loop><source src="assets/videos/4.mp4" type="video/mp4"></video><figcaption>Rollout 4</figcaption></figure>
-                <figure><video controls preload="metadata" playsinline muted loop><source src="assets/videos/5.mp4" type="video/mp4"></video><figcaption>Rollout 5</figcaption></figure>
-                <figure><video controls preload="metadata" playsinline muted loop><source src="assets/videos/6.mp4" type="video/mp4"></video><figcaption>Rollout 6</figcaption></figure>
-                <figure><video controls preload="metadata" playsinline muted loop><source src="assets/videos/7.mp4" type="video/mp4"></video><figcaption>Rollout 7</figcaption></figure>
-                <figure><video controls preload="metadata" playsinline muted loop><source src="assets/videos/8.mp4" type="video/mp4"></video><figcaption>Rollout 8</figcaption></figure>
-                <figure><video controls preload="metadata" playsinline muted loop><source src="assets/videos/9.mp4" type="video/mp4"></video><figcaption>Rollout 9</figcaption></figure>
-            </div>
-            <div class="note">
-                <strong>Note:</strong> video captions are placeholders (<code>Rollout 1–9</code>). Tell me the task each clip shows and I'll label them (e.g. Tower of Hanoi, Bridge Building, Burger, Stack).
-            </div>
-        </div>
-    </section>
-
     <!-- Real Robot Experiments -->
     <section id="real-robot">
         <div class="container">
@@ -250,7 +250,7 @@
                     <span class="icon">📑</span>
                     <h3>Paper</h3>
                     <p>Full ICLR 2026 submission with method, problem formulation, and experiments.</p>
-                    <a href="papers/roboharness.pdf" class="btn btn-primary">Read PDF</a>
+                    <span class="btn btn-primary" style="opacity:.55;cursor:not-allowed;" aria-disabled="true">Coming soon</span>
                 </div>
             </div>
         </div>
@@ -311,7 +311,7 @@
         <div class="container">
             <p>&copy; 2026 The authors. All rights reserved.</p>
             <p>
-                <a href="papers/roboharness.pdf">PDF</a> |
+                <span style="opacity:.6;">PDF (coming soon)</span> |
                 <a href="https://github.com/markli1hoshipu/RoboHarness">GitHub</a> |
                 <a href="https://markli1hoshipu.github.io/Plan_LLM/">Self-CriTeach</a>
             </p>

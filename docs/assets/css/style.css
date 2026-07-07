@@ -1,9 +1,9 @@
 /* Self-CriTeach Project Page Styles */
 
 :root {
-  --primary-color: #1a365d;
-  --accent-color: #3182ce;
-  --success-color: #38a169;
+  --primary-color: #9a3412;
+  --accent-color: #ea580c;
+  --success-color: #f97316;
   --warning-color: #dd6b20;
   --bg-color: #ffffff;
   --bg-secondary: #f7fafc;
@@ -181,7 +181,7 @@ nav a {
 .hero {
   text-align: center;
   padding: 4rem 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #fb923c 0%, #c2410c 100%);
   color: white;
 }
 
@@ -773,9 +773,12 @@ footer a {
 
 .demo-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem;
   margin-top: 1.5rem;
+}
+@media (max-width: 640px) {
+  .demo-gallery { grid-template-columns: 1fr; }
 }
 .demo-gallery figure { margin: 0; }
 .demo-gallery video {
