@@ -3,60 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RoboHarness: Memory-Driven Orchestration of Heterogeneous Robot Policies</title>
-    <meta name="description" content="RoboHarness: Memory-Driven Orchestration and Chaining of Heterogeneous Policies for Long-Horizon Robot Planning">
+    <title>RoboHarness — Moving Beyond the Universal Embodied Model</title>
+    <meta name="description" content="RoboHarness: Memory-Driven Orchestration of Heterogeneous Robot Policies for Long-Horizon Planning. Embodied AI is shifting from a universal embodied model toward heterogeneous policy orchestration.">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
+    <!-- Top bar -->
+    <header class="topbar">
         <div class="container">
-            <div class="logo">RoboHarness</div>
-            <ul>
-                <li><a href="#demos">Demos</a></li>
-                <li><a href="#abstract">Abstract</a></li>
-                <li><a href="#motivation">Motivation</a></li>
-                <li><a href="#contributions">Contributions</a></li>
-                <li><a href="#method">Method</a></li>
-                <li><a href="#problem">Problem</a></li>
-                <li><a href="#results">Results</a></li>
-                <li><a href="#real-robot">Real Robot</a></li>
-                <li><a href="#code">Code</a></li>
-                <li><a href="#citation">Citation</a></li>
-            </ul>
+            <span class="brand">RoboHarness</span>
+            <nav>
+                <ul class="navlinks">
+                    <li><a href="#demos"><span class="l-en">Demos</span><span class="l-zh cjk">演示</span></a></li>
+                    <li><a href="#framework"><span class="l-en">Framework</span><span class="l-zh cjk">框架</span></a></li>
+                    <li><a href="#boundaries"><span class="l-en">Boundaries</span><span class="l-zh cjk">能力边界</span></a></li>
+                    <li><a href="#bridge"><span class="l-en">Bridge</span><span class="l-zh cjk">交接</span></a></li>
+                    <li><a href="#longhorizon"><span class="l-en">Results</span><span class="l-zh cjk">结果</span></a></li>
+                    <li><a href="#realrobot"><span class="l-en">Real Robot</span><span class="l-zh cjk">真机</span></a></li>
+                    <li><a href="#paper"><span class="l-en">Paper</span><span class="l-zh cjk">论文</span></a></li>
+                </ul>
+            </nav>
+            <div class="bar-right">
+                <div class="lang-toggle" role="group" aria-label="Language">
+                    <button type="button" data-lang-btn="en">EN</button>
+                    <button type="button" data-lang-btn="zh" class="cjk">中文</button>
+                </div>
+            </div>
         </div>
-    </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <div class="hero">
+    <!-- Hero -->
+    <section class="hero-article">
         <div class="container">
-            <h1>RoboHarness</h1>
-            <p class="subtitle">Memory-Driven Orchestration and Chaining of Heterogeneous<br>Policies for Long-Horizon Robot Planning</p>
+            <p class="kicker">RoboHarness</p>
+            <h1>
+                <span class="l-en">Moving Beyond the Universal Embodied Model</span>
+                <span class="l-zh cjk">告别万能具身模型崇拜</span>
+            </h1>
+            <p class="sub">
+                <span class="l-en">Embodied AI Is Shifting Toward Heterogeneous Policy Orchestration</span>
+                <span class="l-zh cjk">具身智能走向异构策略编排</span>
+            </p>
+            <p class="lede">
+                <span class="l-en">As VLA, WAM, RL, TAMP, MPC… each model encounters distinct capability boundaries, the key to completing complex robotic tasks may no longer lie in the strength of any single model, but in whether the system can perform capability-aware task decomposition and route each subtask to the right policy at the right time.</span>
+                <span class="l-zh cjk">当 VLA、WAM、RL、TAMP、MPC 等模型各自触及不同的能力边界时，决定机器人能否完成复杂任务的关键，或许不再是某一个模型有多强，而是系统能否基于策略能力边界进行任务拆解，并在正确的时机将每个子任务路由给最合适的策略。</span>
+            </p>
 
             <div class="authors">
                 <span>Jinbang Huang¹</span>, <span>Yuanzhao Hu¹</span>, <span>Zhiyuan Li¹</span>,
                 <span>Ran Qi¹</span>, <span>Yixin Xiao¹</span>, <span>Zhanguang Zhang¹</span>,
                 <span>Mark Coates²</span>, <span>Tongtong Cao¹</span>, <span>Yingxue Zhang¹</span>
                 <br>
-                <em>¹Huawei Noah's Ark Lab, ²McGill University</em>
+                <em>¹Huawei Noah's Ark Lab &nbsp;·&nbsp; ²McGill University</em>
             </div>
 
             <div class="hero-buttons">
-                <span class="btn btn-secondary" style="opacity:.55;cursor:not-allowed;" aria-disabled="true" title="Paper coming soon">📑 Paper — coming soon</span>
-                <a href="https://github.com/markli1hoshipu/RoboHarness" class="btn btn-secondary">💻 Code</a>
-                <a href="#citation" class="btn btn-secondary">📚 Cite</a>
+                <a href="https://arxiv.org/abs/2607.18060" class="btn btn-secondary">📑 <span class="l-en">Paper</span><span class="l-zh cjk">论文</span></a>
+                <a href="https://github.com/markli1hoshipu/RoboHarness" class="btn btn-secondary">💻 <span class="l-en">Code</span><span class="l-zh cjk">代码</span></a>
+                <a href="#paper" class="btn btn-secondary">📚 <span class="l-en">Cite</span><span class="l-zh cjk">引用</span></a>
             </div>
         </div>
-    </div>
+    </section>
+
+    <div class="article">
+
+    <!-- Opening callout + intro -->
+    <section id="top">
+        <div class="container">
+            <div class="callout">
+                <span class="l-en">There is no universally best model — only the policy best suited to the situation.</span>
+                <span class="l-zh cjk">没有最强的模型，只有最合适的策略。</span>
+            </div>
+
+            <p class="l-en">Embodied AI is in the midst of a race to expand model capabilities. VLA models continue to scale up parameters and training data; WAMs seek to improve decision-making by predicting future outcomes; RL strengthens specific behaviors through post-training; and TAMP relies on logical and geometric constraints for precise planning… Each approach is trying to answer the same question: how can we make robots more intelligent and more general?</p>
+            <p class="l-zh cjk">具身智能正在经历一场模型能力竞赛。VLA 不断扩展参数规模和训练数据，WAM 尝试通过预测未来辅助决策，RL 用后训练强化特定行为，TAMP 则依靠逻辑与几何约束完成精确规划。每条路线都在回答同一个问题：怎样让机器人更聪明、更通用？</p>
+
+            <p class="l-en">Yet in the real world, one fact is becoming increasingly clear: no single policy excels simultaneously at semantic understanding, closed-loop control, geometric precision, long-horizon reasoning, and out-of-distribution robustness. A "universal embodied model" remains an inspiring aspiration rather than an engineering reality that can be deployed today.</p>
+            <p class="l-zh cjk">但走进真实世界后，一个越来越明显的事实是：没有任何一种策略能在语义理解、闭环控制、几何精度、长时序推理和分布外鲁棒性上同时占优。所谓"万能具身模型"，更像一个令人向往的目标，而不是今天可以直接部署的工程现实。</p>
+        </div>
+    </section>
 
     <!-- Demos -->
     <section id="demos" class="demo-section">
         <div class="container">
-            <h2>Demonstrations</h2>
-            <p>Long-horizon rollouts of RoboHarness orchestrating heterogeneous policies on real hardware.</p>
+            <h2>
+                <span class="l-en">See It In Action</span>
+                <span class="l-zh cjk">先看效果</span>
+            </h2>
+            <p class="l-en">Long-horizon rollouts of RoboHarness orchestrating heterogeneous policies — decomposing an instruction, routing each subtask to the right policy, and bridging every handoff.</p>
+            <p class="l-zh cjk">RoboHarness 编排异构策略完成长时序任务：分解指令、将每个子任务路由给最合适的策略，并在每次交接处生成桥接。</p>
             <div class="demo-gallery">
                 <figure><video controls preload="metadata" playsinline muted loop poster="assets/posters/1.jpg"><source src="assets/videos/1.mp4" type="video/mp4"></video><figcaption><strong>Task 1.</strong> Open the top drawer of the cabinet and put the middle bowl in it, then put the remaining bowls on the plate.</figcaption></figure>
                 <figure><video controls preload="metadata" playsinline muted loop poster="assets/posters/2.jpg"><source src="assets/videos/2.mp4" type="video/mp4"></video><figcaption><strong>Task 2.</strong> Put the butter and chocolate pudding in the pan, then turn on the stove, finally put the pan on the stove.</figcaption></figure>
@@ -71,200 +109,195 @@
         </div>
     </section>
 
-    <!-- Abstract Section -->
-    <section id="abstract">
+    <!-- How far away -->
+    <section id="howfar">
         <div class="container">
-            <h2>Abstract</h2>
-            <p style="font-size: 1.1rem; line-height: 1.8;">
-                Long-horizon robotic tasks require instruction following, environmental generalization, logical consistency, and robustness, yet no single policy reliably satisfies all these requirements. Existing policies instead exhibit complementary but bounded capabilities, motivating the joint use of multiple heterogeneous policies. The central challenge is therefore not planning alone, but <strong>decomposing tasks and assigning subtasks according to policy capabilities</strong>. However, existing long-horizon planning methods are largely built on homogeneous predefined skills with fixed applicability, and therefore lack the ability to reason about uncertain policy boundaries, adaptively route subtasks, or handle distribution mismatch across policy handoffs.
-            </p>
-            <p style="font-size: 1.1rem; line-height: 1.8;">
-                We propose <strong>RoboHarness</strong>, a unified framework that orchestrates heterogeneous robot policies as reusable agentic skill modules. RoboHarness incorporates auxiliary modules that characterize policy capability boundaries and mediate inter-policy inputs and outputs. It can coordinate independently trained policies — such as VLAs and RL policies — as well as hand-designed systems such as task-and-motion planners, despite differences in assumptions, representations, and execution regimes. Experiments on public benchmarks and real robots show substantial gains in long-horizon planning, zero-shot generalization, and out-of-distribution robustness.
-            </p>
-        </div>
-    </section>
+            <h2>
+                <span class="l-en">The Universal Embodied Model Is Compelling — but How Far Away Is It?</span>
+                <span class="l-zh cjk">万能具身模型很诱人，但我们离它到底有多远？</span>
+            </h2>
+            <p class="l-en">A universal embodied model sounds ideal, but it remains far from reality, at least for the foreseeable future. Complex tasks require semantic understanding, logical reasoning, geometric planning, closed-loop control, and failure recovery at the same time. These capabilities not only demand enormous datasets spanning diverse environments and robot embodiments, but also involve different — and sometimes conflicting — training objectives and execution mechanisms. A vast gap remains between achieving breakthroughs in each capability separately and enabling a single model to sustain all of them reliably over long periods in open-world environments.</p>
+            <p class="l-zh cjk">万能具身模型听起来很美好，但至少在可预见的阶段，它离现实仍然遥远。复杂任务同时要求语义理解、逻辑推理、几何规划、闭环控制与异常恢复。这些能力不仅需要覆盖不同场景和机器人本体的海量数据，还对应不同的训练目标与执行机制，彼此之间甚至存在冲突。从各项能力分别取得突破，到由单一模型在开放环境中长期、稳定地兼顾所有能力，仍横亘着一道巨大鸿沟。</p>
 
-    <!-- Motivation -->
-    <section id="motivation">
-        <div class="container">
-            <h2>Motivation</h2>
-            <p style="font-size: 1.1rem; line-height: 1.8;">
-                Modern robot systems contain many useful policies, but they are rarely designed to work together. A VLA policy
-                may be strong at language-conditioned manipulation but weak under geometric precision constraints. A
-                task-and-motion planner may be precise and logically consistent but brittle when perception or object semantics
-                are uncertain. An RL policy may solve a narrow control subproblem but fail outside its training distribution.
-            </p>
-            <p style="font-size: 1.1rem; line-height: 1.8;">
-                Naively chaining these policies is unreliable because each policy expects states, observations, and action
-                contexts that resemble its own training or design distribution. After one policy completes a subtask, the
-                resulting scene may be valid for the overall task but still incompatible with the next policy. RoboHarness
-                treats this as the central long-horizon planning problem: not only deciding <em>what</em> should happen next,
-                but deciding <em>which policy</em> should do it and <em>how</em> to make the handoff executable.
-            </p>
-        </div>
-    </section>
+            <p class="l-en">This is why we chose heterogeneous policy orchestration. Instead of waiting for an all-powerful model, we can enable today's specialized policies to work together and invoke the most appropriate capability at the right moment.</p>
+            <p class="l-zh cjk">这正是我们选择异构策略编排的原因：与其等待一个无所不能的模型，不如让各有所长的现有策略协同工作，在正确的时机调用最合适的能力。</p>
 
-    <!-- Key Contributions -->
-    <section id="contributions">
-        <div class="container">
-            <h2>Key Contributions</h2>
-            <div class="contribution-grid contribution-grid-3">
-                <div class="contribution-card">
-                    <span class="icon">🧩</span>
-                    <h3>Heterogeneous Policy Orchestration</h3>
-                    <p>A unified framework for zero-shot long-horizon planning that encapsulates heterogeneous robot policies as reusable agentic skills and augments them with auxiliary modules for capability characterization and inter-policy mediation — enabling capability-aware task decomposition, adaptive policy routing, and spatially consistent handoff under uncertain capability boundaries.</p>
-                </div>
+            <table class="cap-table">
+                <tr>
+                    <th>VLA</th>
+                    <td><span class="l-en">Excels at visual-semantic understanding, open-vocabulary instruction following, and end-to-end action generation, but remains limited in long-horizon consistency.</span><span class="l-zh cjk">擅长视觉语义理解、开放词汇指令跟随和端到端动作生成，但长时序一致性仍有限。</span></td>
+                </tr>
+                <tr>
+                    <th><span class="l-en">RL Policy</span><span class="l-zh cjk">RL 策略</span></th>
+                    <td><span class="l-en">Can develop robust closed-loop behaviors within a specific training distribution, but is prone to failure under environmental changes and task transfer.</span><span class="l-zh cjk">能够在特定训练分布内形成稳定闭环行为，但面对环境变化与任务迁移时容易失效。</span></td>
+                </tr>
+                <tr>
+                    <th>TAMP</th>
+                    <td><span class="l-en">Excels at symbolic reasoning, geometric constraints, and precise manipulation, but is limited by predefined abstractions, skill sets, and state representations.</span><span class="l-zh cjk">擅长符号推理、几何约束和精确操作，却受限于预定义抽象、技能集合与状态表示。</span></td>
+                </tr>
+                <tr>
+                    <th>WAM</th>
+                    <td><span class="l-en">Supports planning by predicting future states or action outcomes, but is computationally expensive and struggles with long-horizon reasoning.</span><span class="l-zh cjk">通过预测未来状态或动作后果辅助规划，但时间成本高，难以处理长序推理。</span></td>
+                </tr>
+                <tr>
+                    <th>…</th>
+                    <td>…</td>
+                </tr>
+            </table>
 
-                <div class="contribution-card">
-                    <span class="icon">🌉</span>
-                    <h3>The Memory Bridge</h3>
-                    <p>A plug-and-play inter-policy chaining technique that combines memory retrieval and spatial distribution learning to preserve stable inter-policy handoffs — without any additional joint retraining of the coordinated policies.</p>
-                </div>
-
-                <div class="contribution-card">
-                    <span class="icon">🤖</span>
-                    <h3>Empirical Effectiveness</h3>
-                    <p>Demonstrated on zero-shot long-horizon tasks by orchestrating heterogeneous policies including VLAs, TAMP systems, and RL policies. Evaluations across multiple benchmarks and real robots show improved long-horizon consistency, out-of-distribution resilience, and zero-shot robustness.</p>
-                </div>
+            <div class="callout light">
+                <span class="l-en">If no single model can do everything, while different policies possess complementary strengths, the real question is no longer <span class="q">"Which one should we choose?"</span> but <span class="q">"How can we make them work together?"</span></span>
+                <span class="l-zh cjk">既然单一模型无法包办一切，而不同策略又各有所长，真正的问题便不再是<span class="q">"选谁"</span>，而是<span class="q">"如何让它们协同"</span>。</span>
             </div>
         </div>
     </section>
 
-    <!-- Method Overview -->
-    <section id="method">
+    <!-- Framework -->
+    <section id="framework">
         <div class="container">
-            <h2>Method Overview</h2>
-            <p>
-                RoboHarness wraps each heterogeneous policy as a callable agentic skill with policy-specific metadata, and uses
-                auxiliary skills to identify capability boundaries and bridge transitions. Given a high-level instruction, it
-                decomposes the task, routes each subtask to a policy operating within its capability region, and constructs a
-                memory-conditioned handoff between successive policies to preserve executability.
-            </p>
+            <h2>
+                <span class="l-en">From Model Competition to Heterogeneous Policy Orchestration</span>
+                <span class="l-zh cjk">从模型竞争，走向异构策略编排</span>
+            </h2>
+            <p class="l-en">This is the premise behind RoboHarness. If no policy today can reliably cover all the capabilities required by complex, long-horizon tasks, why not first enable existing policies — with their distinct strengths — to collaborate effectively? RoboHarness neither abandons the long-term goal of a universal embodied model nor retreats to a traditional modular system built around handcrafted rules. Instead, it identifies the capability boundaries of different policies in the current context and turns their complementary strengths into end-to-end task execution that surpasses any single policy.</p>
+            <p class="l-zh cjk">这正是 RoboHarness 的出发点：既然今天还没有一个策略能够稳定覆盖复杂长时序任务所需的全部能力，为什么不先让已经存在、各有所长的策略真正协同起来？RoboHarness 并非抛开万能具身模型的长期目标，也不是用传统模块化系统退回手工规则；相反，它通过识别不同策略在当前上下文中的能力边界，将互补能力转化为超越单一策略的完整任务执行。</p>
+
+            <p class="l-en">To achieve this, RoboHarness wraps independently developed control systems — including VLA, RL policies, and TAMP — as callable agentic skills. It selects policies dynamically according to the task and environment, reroutes when a policy fails or execution conditions change, and generates bridge trajectories when the state distributions of adjacent policies are incompatible. RoboHarness is policy-agnostic by design: its underlying policies need not share a model architecture, action space, or training data, and they do not require joint retraining. More capable VLA and WAM models, navigation policies, and other future systems can therefore be integrated directly as new capability modules.</p>
+            <p class="l-zh cjk">为此，RoboHarness 将 VLA、RL policy、TAMP 等独立开发的控制系统封装为可调用的 agentic skills，根据任务与环境动态选择策略，在策略失效或执行条件变化时重新路由，并在相邻策略的状态分布不兼容时生成桥接轨迹。RoboHarness 在设计上与具体策略无关（policy-agnostic），不要求底层策略共享模型结构、动作空间或训练数据，也无需重新联合训练。因此，未来更强的 VLA、WAM、导航策略等都可以作为新的能力模块直接接入。</p>
 
             <figure class="figure">
-                <img src="assets/images/harness_framework.png" alt="RoboHarness framework: input information flows through Understand, Memory, and Evolution skills to route subtasks across heterogeneous policies (VLA, TAMP, RL), producing an output plan with memory bridges." loading="lazy">
+                <img src="assets/images/harness_framework.png" alt="RoboHarness framework: multimodal input flows through Understanding, Memory, and Evolution skills to route subtasks across heterogeneous policies (VLA, TAMP, RL), producing an output plan with memory bridges." loading="lazy">
                 <figcaption>
-                    <strong>The RoboHarness framework.</strong> Multimodal input (image, text, estimated pose, robot state)
-                    is processed by <em>Understand</em>, <em>Memory</em>, and <em>Evolution</em> skills. The agent decomposes
-                    the instruction into subtasks, routes each to a heterogeneous policy (TAMP, VLA, RL, …), and inserts a
-                    <em>Memory Bridge</em> at every policy handoff — with retrieval/update loops that continually refine the harness.
+                    <span class="l-en"><span class="fig-num">Figure 1</span> | The overall RoboHarness framework. Three categories of auxiliary skills — understanding, memory, and evolution — organize heterogeneous robot policies to support capability-aware planning, routing, and handoffs.</span>
+                    <span class="l-zh cjk"><span class="fig-num">图 1</span> | RoboHarness 总体框架：以理解、记忆和自进化三类辅助技能，组织异构机器人策略完成能力感知的规划、路由与交接。</span>
                 </figcaption>
             </figure>
 
-            <h3>Execution loop</h3>
-            <p>During execution, RoboHarness performs six steps:</p>
-            <ul class="method-steps">
-                <li><strong>Observe context.</strong> Take in the current multimodal context — image observations, instruction text, estimated object poses, robot state, and execution history.</li>
-                <li><strong>Extract signals.</strong> Use auxiliary skills to extract task-relevant signals for capability reasoning: visual-semantic similarity, object-pose feasibility, robot-state compatibility, action confidence, and environment quality.</li>
-                <li><strong>Reason about capability boundaries.</strong> Compare each candidate policy's memory and capability region against the current task context.</li>
-                <li><strong>Decompose &amp; assign.</strong> Decompose the instruction into subtasks according to what the available modules can reliably execute, and assign each to a suitable policy (VLA, task-and-motion planner, RL policy, grasping module, or navigation component).</li>
-                <li><strong>Construct a Memory Bridge.</strong> At each policy transition, retrieve in-distribution execution memories and estimate a spatially compatible handoff state for the next policy.</li>
-                <li><strong>Execute &amp; adapt.</strong> Execute, monitor, retry, reroute, and update memory when the plan becomes invalid, the environment changes, or a capability mismatch is detected.</li>
-            </ul>
+            <p class="l-en">The coding agent in RoboHarness is responsible for high-level planning and policy routing, but it does not rely solely on a language model to make implicit judgments from raw inputs. Instead, three categories of auxiliary skills provide structured evidence for decision-making. <strong>Understanding Skills</strong> analyze images and language, converting raw inputs such as task instructions and visual observations into policy-relevant quantitative signals, including embedding similarity, pose uncertainty, and image exposure — signals that are difficult for a coding agent to obtain directly and reliably, yet crucial for sound decisions. <strong>Memory Skills</strong> retrieve and update historical execution experience, while the Memory Bridge resolves state-distribution mismatches between heterogeneous policies to enable reliable handoffs. <strong>Evolution Skills</strong> use online feedback to update policy metadata, system parameters, and orchestration logic.</p>
+            <p class="l-zh cjk">RoboHarness 中的 coding agent 承担高层规划与策略路由，但其决策并非仅依赖语言模型对原始输入进行隐式判断。系统通过三类辅助技能提供结构化的决策依据：<strong>Understanding Skills</strong> 负责图像与语言分析，将任务指令、视觉观测等原始输入转化为与策略选择相关的量化信息，例如 embedding 相似度、位姿不确定性和图像曝光度等，这些信息通常难以由 coding agent 直接、可靠地获取，但对决策至关重要；<strong>Memory Skills</strong> 检索并更新历史执行经验，并通过 Memory Bridge 处理异构策略之间的状态分布不匹配，实现稳定交接；<strong>Evolution Skills</strong> 则利用在线反馈更新策略元数据、系统参数与编排逻辑。</p>
+        </div>
+    </section>
 
-            <h3>Auxiliary Skill Modules</h3>
-            <p>Three categories of auxiliary skills support the orchestration process. They do not replace the robot policies — they provide evidence for routing and handoff decisions.</p>
-            <div class="tool-grid">
-                <div class="tool-card">
-                    <h4>🔍 Understand Skills</h4>
-                    <p>Extract decision-relevant information from multimodal inputs — semantic object information, visual similarity, image quality, scene layout, pose estimates, and robot-state compatibility — as evidence for routing and handoffs.</p>
-                </div>
-                <div class="tool-card">
-                    <h4>🧠 Memory Skills</h4>
-                    <p>Retrieve and update policy-specific execution memories: demonstrations, behavior-cloning data, rollout trajectories, observations, prompts, end-effector poses, joint states, and execution traces — used to gauge context compatibility and build handoffs.</p>
-                </div>
-                <div class="tool-card">
-                    <h4>🌱 Evolution Skills</h4>
-                    <p>Adapt the harness online — refine policy metadata, update routing rules, handle unseen objects or task variants, adjust bridge construction, and trigger retry or rerouting when evidence shows the selected policy is no longer appropriate.</p>
-                </div>
-            </div>
+    <!-- Step 1: boundaries -->
+    <section id="boundaries">
+        <div class="container">
+            <h2>
+                <span class="l-en">Step 1 · Identify Dynamic Policy Capability Boundaries</span>
+                <span class="l-zh cjk">第一步 · 识别策略的动态能力边界</span>
+            </h2>
+            <p class="l-en">A policy's capability is not a fixed label. The same VLA may remain robust to changes in lighting yet degrade rapidly when the camera viewpoint, initial robot state, or sensor noise changes. The question the system must answer is not simply, "Has this model performed this type of task before?" but rather, "Is it still suitable under the current task, scene, observation quality, and robot state?"</p>
+            <p class="l-zh cjk">策略能力不是一个固定标签。同一个 VLA 可能在光照变化下依旧稳定，却在相机视角、初始机器人状态或传感器噪声发生变化时迅速退化。因此，系统需要判断的不是"这个模型是否做过这类任务"，而是"在当前任务、场景、观测质量和机器人状态下，它是否仍然适合执行"。</p>
 
-            <h3>The Memory Bridge</h3>
-            <p>
-                The Memory Bridge is the key mechanism for chaining heterogeneous policies <em>without joint retraining</em>;
-                its purpose is to reduce distribution mismatch at the moment execution transfers from one policy to another.
-                For each policy, RoboHarness maintains a memory bank of in-distribution execution data (training data and
-                rollout history). When a handoff is required, the current instruction and observation are encoded by language
-                and visual encoders and compared against the memory bank by cosine similarity. The top retrieved examples
-                reveal which states, object poses, end-effector configurations, and trajectories are compatible with the next
-                policy; RoboHarness then fits a spatial distribution over feasible handoff states and uses it to validate,
-                adjust, or reconstruct the transition into that policy's executable region.
-            </p>
-            <p>In practice the bridge supports several handoff behaviors:</p>
-            <ul class="method-steps">
-                <li><strong>Validate.</strong> Confirm the current state is already suitable for the next policy.</li>
-                <li><strong>Adjust.</strong> Nudge an object or robot pose before invoking the next policy.</li>
-                <li><strong>Fallback.</strong> Select a fallback trajectory or retry from a nearby compatible state.</li>
-                <li><strong>Reroute.</strong> Switch to a different policy when bridge confidence is low.</li>
-            </ul>
+            <p class="l-en">RoboHarness uses Understanding Skills to interpret raw inputs across multiple dimensions — semantics, vision, robot state, and input quality — and combines the resulting quantitative metrics for policy routing. Policy selection can therefore adapt dynamically as task states and execution conditions evolve.</p>
+            <p class="l-zh cjk">RoboHarness 通过 Understanding Skills 从语义、视觉、机器人状态和输入质量等多个维度解析原始输入，并将得到的量化指标共同用于策略路由，使策略选择能够随任务状态和执行条件动态调整。</p>
+
             <figure class="figure">
-                <img src="assets/images/memory_bridge.png" alt="Memory bridge pipeline: frozen language and visual encoders produce embeddings matched to a memory bank by cosine similarity; top-K retrieved trajectories are fit by 3D regression to form the memory bridge." loading="lazy">
+                <img src="assets/images/policy_usage_ratio.png" alt="Stacked horizontal bar chart of VLA vs. motion-planner usage ratio across seven perturbation types, alongside the relationship between standalone success rate and invocation ratio." loading="lazy">
                 <figcaption>
-                    <strong>Memory-bridge construction.</strong> Frozen language and visual encoders embed the instruction and
-                    observation; cosine similarity retrieves matching entries (text, image, robot trajectory) from the memory
-                    bank. The top-K retrieved trajectories, anchored at <em>t</em>, are fit by a <em>3D regression</em> to build
-                    the memory bridge that guides the next policy.
+                    <span class="l-en"><span class="fig-num">Figure 2</span> | Policy invocation ratios under different perturbations, and the relationship between a VLA's standalone success rate and its invocation ratio. The better a policy fits the current conditions, the more likely the system is to invoke it.</span>
+                    <span class="l-zh cjk"><span class="fig-num">图 2</span> | 不同扰动下的策略调用比例，以及 VLA 独立成功率与调用比例之间的关系。策略越适应当前条件，系统越倾向于调用它。</span>
                 </figcaption>
             </figure>
-        </div>
-    </section>
 
-    <!-- Problem Definition -->
-    <section id="problem">
-        <div class="container">
-            <h2>Problem: Policy Capability-Aware Planning (PCAP)</h2>
-            <p>
-                We consider zero-shot long-horizon planning with a library of heterogeneous policies
-                <strong>Π = {π₁, …, π<sub>N</sub>}</strong>. Each policy π<sub>i</sub> is an executable module with its own
-                input space 𝒳<sub>i</sub>, output space 𝒴<sub>i</sub>, and <strong>capability region</strong>
-                𝒞<sub>i</sub> ⊆ 𝒪 × 𝒢 — the set of (observation-context, subtask) pairs it can reliably execute.
-                A memory bank 𝓜 = {𝓜₁, …, 𝓜<sub>N</sub>} stores in-distribution execution data (demonstrations,
-                behavior-cloning data, or rollout trajectories) for each policy.
+            <p class="table-cap">
+                <span class="l-en"><span class="fig-num">Table 1</span> | Success rates on LIBERO and LIBERO-Plus (%)</span>
+                <span class="l-zh cjk"><span class="fig-num">表 1</span> | LIBERO 与 LIBERO-Plus 成功率（%）</span>
             </p>
-            <ul class="method-steps">
-                <li><strong>Decompose.</strong> Turn instruction <em>I</em> into a subtask sequence τ = (g₁, …, g<sub>T</sub>).</li>
-                <li><strong>Assign.</strong> Choose a policy for each subtask, ρ = (π<sub>k₁</sub>, …, π<sub>k<sub>T</sub></sub>), with each applied inside its capability region: (o<sub>t</sub>, g<sub>t</sub>) ∈ 𝒞<sub>k<sub>t</sub></sub>.</li>
-                <li><strong>Bridge.</strong> Build handoff representations z = (z₁, …, z<sub>T−1</sub>) so one policy's terminal state lands in the next policy's executable region.</li>
-                <li><strong>Objective.</strong> Maximize P(o<sub>T</sub> ⊨ G(I) | o₀, I, Π, 𝓜) subject to capability and memory-conditioned handoff-compatibility constraints.</li>
-            </ul>
-            <p style="margin-top:1.5rem;">Plainly, RoboHarness asks three questions at every step:</p>
-            <ol style="font-size:1.05rem; line-height:1.8; padding-left:1.5rem;">
-                <li>What subtask should be attempted next?</li>
-                <li>Which policy is most likely to execute it under the current context?</li>
-                <li>How should the scene, state, or representation be adjusted so the next policy receives an input it can reliably handle?</li>
-            </ol>
-            <p style="margin-top:1rem;">
-                This shifts long-horizon planning from fixed skill sequencing to <strong>adaptive orchestration under uncertain
-                policy boundaries</strong>.
-            </p>
-        </div>
-    </section>
-
-    <!-- Results -->
-    <section id="results">
-        <div class="container">
-            <h2>Results</h2>
-            <p>
-                RoboHarness is evaluated along five complementary axes — <strong>long-horizon task completion</strong>,
-                <strong>perturbation robustness</strong>, <strong>ablation of system components</strong>,
-                <strong>adaptive policy usage</strong>, and <strong>real-robot deployment</strong> — testing whether it can
-                coordinate heterogeneous policies, preserve handoff consistency, and recover when the scene changes. It beats
-                prior state-of-the-art models <em>without any re-training or fine-tuning</em>.
-            </p>
-
-            <h3>LIBERO-LoHo benchmark — long-horizon evaluation</h3>
-            <p>Five long-horizon tasks; each cell reports <strong>Q-score / success rate</strong> (%).</p>
             <div class="table-scroll">
             <table class="results-table">
                 <thead>
                     <tr>
-                        <th>Method</th>
-                        <th>Task 1</th><th>Task 2</th><th>Task 3</th><th>Task 4</th><th>Task 5</th><th>Average</th>
+                        <th><span class="l-en">Model</span><span class="l-zh cjk">模型</span></th>
+                        <th><span class="l-en">Original</span><span class="l-zh cjk">原始</span></th>
+                        <th><span class="l-en">Robot State</span><span class="l-zh cjk">机器人状态</span></th>
+                        <th><span class="l-en">Language</span><span class="l-zh cjk">语言</span></th>
+                        <th><span class="l-en">Layout</span><span class="l-zh cjk">布局</span></th>
+                        <th><span class="l-en">Background</span><span class="l-zh cjk">背景</span></th>
+                        <th><span class="l-en">Sensor</span><span class="l-zh cjk">传感器</span></th>
+                        <th><span class="l-en">Camera</span><span class="l-zh cjk">相机</span></th>
+                        <th><span class="l-en">Light</span><span class="l-zh cjk">光照</span></th>
+                        <th><span class="l-en">Average</span><span class="l-zh cjk">平均</span></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="highlight">
-                        <td><strong>RoboHarness (ours)</strong></td>
+                        <td><strong>RoboHarness (Ours)</strong></td>
+                        <td class="best">98.7</td><td class="best">90.4</td><td class="best">97.0</td><td class="best">86.8</td>
+                        <td class="best">97.1</td><td>90.3</td><td class="best">87.6</td><td class="best">97.4</td><td class="best">93.2</td>
+                    </tr>
+                    <tr><td>π0.5</td><td>96.9</td><td>75.4</td><td>85.6</td><td>85.7</td><td>94.6</td><td>89.7</td><td>75.4</td><td>96.9</td><td>85.7</td></tr>
+                    <tr><td>π0</td><td>94.2</td><td>61.0</td><td>63.5</td><td>76.4</td><td>79.0</td><td>80.1</td><td>61.0</td><td>85.0</td><td>53.6</td></tr>
+                    <tr><td>UniVLA</td><td>95.2</td><td>46.2</td><td>77.6</td><td>31.9</td><td>81.0</td><td>21.2</td><td>1.8</td><td>69.0</td><td>42.9</td></tr>
+                    <tr><td>OpenVLA-OFT</td><td>97.6</td><td>21.7</td><td>81.0</td><td>68.7</td><td>91.0</td><td>78.6</td><td>55.6</td><td>92.7</td><td>67.9</td></tr>
+                    <tr><td>X-VLA</td><td>98.1</td><td>89.7</td><td>75.7</td><td>71.8</td><td>96.0</td><td>62.7</td><td>23.4</td><td>88.2</td><td>71.4</td></tr>
+                    <tr><td>Cosmos-Policy</td><td>98.5</td><td>63.3</td><td>81.7</td><td>82.2</td><td>88.9</td><td class="best">92.7</td><td>75.8</td><td>96.5</td><td>82.2</td></tr>
+                    <tr><td>FAST-WAM</td><td>97.6</td><td>44.5</td><td>68.9</td><td>60.7</td><td>53.7</td><td>37.7</td><td>16.4</td><td>78.2</td><td>51.5</td></tr>
+                    <tr><td>LingBot-VA</td><td>98.5</td><td>83.0</td><td>86.4</td><td>76.2</td><td>53.1</td><td>64.4</td><td>40.9</td><td>82.3</td><td>69.5</td></tr>
+                </tbody>
+            </table>
+            </div>
+
+            <p class="l-en">Experiments in which RoboHarness coordinates π0.5 and TAMP as its underlying policies make one point especially clear: <strong>the most suitable policy is not fixed.</strong> Under lighting and background changes, π0.5 remains relatively robust and is therefore invoked more often. Under changes to robot state or language, and under sensor noise, the system relies more heavily on TAMP. More broadly, the VLA invocation ratio is positively correlated with its standalone performance under the corresponding perturbation: the more reliably π0.5 handles a condition, the more often RoboHarness invokes it; otherwise, more subtasks are routed to TAMP. This demonstrates that dynamic routing can adapt to a policy's actual reliability in the current environment. Sensor Noise is the main outlier because it directly degrades image quality, making it difficult for Understanding Skills to extract scene information and assess policy applicability reliably; its invocation ratio therefore deviates from the overall relationship with standalone performance.</p>
+            <p class="l-zh cjk">在 RoboHarness 协同调用 π0.5 和 TAMP 作为底层策略的实验中，结果直观说明，<strong>最合适的策略并非固定不变。</strong>光照与背景变化下，π0.5 仍保持较强鲁棒性，因此调用比例更高；在机器人状态、语言变化，和传感器噪声等条件下，系统则更多依赖 TAMP。进一步来看，VLA 的调用比例与其相应扰动下的独立表现总体呈正相关：π0.5 越能稳定应对某类扰动，RoboHarness 就越倾向于调用它；反之，则将更多子任务路由给 TAMP。这表明动态路由能够根据策略在当前环境中的实际可靠性调整决策。Sensor Noise 是其中的主要离群点，因为它直接降低了输入图像质量，使 Understanding Skills 难以可靠提取场景信息并判断策略适用性，导致调用比例与独立性能偏离整体趋势。</p>
+        </div>
+    </section>
+
+    <!-- Step 2: bridge -->
+    <section id="bridge">
+        <div class="container">
+            <h2>
+                <span class="l-en">Step 2 · Bridge the Handoff Gap Between Heterogeneous Policies</span>
+                <span class="l-zh cjk">第二步 · 解决异构策略之间的"交接断层"</span>
+            </h2>
+            <p class="l-en">Choosing the right policy is not enough. Two independently trained or designed policies often have different input requirements, action representations, and state distributions. The terminal state of one may fall precisely in a region that the next policy has never encountered and from which it cannot start reliably. A direct transfer of control can amplify a local distribution shift into a cascading failure over a long-horizon task.</p>
+            <p class="l-zh cjk">选对策略还不够。两个独立训练或设计的策略通常拥有不同的输入要求、动作表示与状态分布。前一个策略的终止状态，可能恰好落在下一个策略从未见过、无法稳定启动的位置。直接切换控制权，便会把一次局部分布偏移放大成长时序任务中的级联失败。</p>
+
+            <p class="l-en">RoboHarness addresses this problem with the <strong>Memory Bridge</strong>. Given the next subtask and the current observation, the system first uses text and visual similarity to retrieve the top-K successful trajectories of the target policy from multimodal memory. It then expands forward and backward along those trajectories to extract robot states such as end-effector poses and joint angles. Next, the Memory Bridge assigns supervision signals according to each state's relative progress through the trajectory and uses online regression to fit a local robot-state–execution-progress distribution in real time. This reconstructs the target policy's in-distribution state region and allows the system to assess whether the current state is compatible with it.</p>
+            <p class="l-zh cjk">RoboHarness 为此提出 <strong>Memory Bridge</strong>。系统首先根据下一子任务和当前观测，通过文本与视觉相似度从多模态记忆中检索 Top-K 条目标策略的成功轨迹，并沿轨迹前后扩展，提取末端执行器位姿、关节角度等机器人状态。随后，Memory Bridge 根据各状态在轨迹中的相对进程赋予监督信号，通过 online regression 实时拟合局部的"机器人状态—执行进程"分布，从而重建目标策略的分布内状态区域，并评估当前状态与该区域的兼容程度。</p>
+
+            <p class="l-en">The system then samples and scores candidate robot states, jointly considering in-distribution confidence and motion cost. It selects a target state from which the next policy can reliably take over and generates a corresponding bridge trajectory. Control is transferred only after the robot reaches that state. By learning a policy's applicable state distribution online from historical execution data, the Memory Bridge can be used as a plug-and-play component with arbitrary robot control policies. It requires neither modifications to the underlying policies nor joint training across policies.</p>
+            <p class="l-zh cjk">在此基础上，系统对候选机器人状态进行采样和评分，综合考虑分布内置信度与 motion cost，选择适合下一策略接管的目标状态，并生成相应的桥接轨迹。机器人到达该状态后，再将控制权交给下一策略。Memory Bridge 利用历史执行数据在线学习策略的适用状态分布，对任意机器人控制策略都可以即插即用，无需修改底层策略，也不需要对多个策略进行联合训练。</p>
+
+            <figure class="figure">
+                <img src="assets/images/memory_bridge.png" alt="Memory Bridge pipeline: frozen language and visual encoders produce embeddings matched to a memory bank by cosine similarity; top-K retrieved trajectories are fit by regression to form the bridge trajectory." loading="lazy">
+                <figcaption>
+                    <span class="l-en"><span class="fig-num">Figure 3</span> | Memory Bridge. Text and visual retrieval identify in-distribution trajectories for the target policy, reconstruct the spatial state distribution, and generate a bridge trajectory to a reliable takeover region.</span>
+                    <span class="l-zh cjk"><span class="fig-num">图 3</span> | Memory Bridge：通过文本与视觉检索找到目标策略的分布内轨迹，重建空间状态分布，并生成通向可靠接管区域的桥接轨迹。</span>
+                </figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- Long horizon -->
+    <section id="longhorizon">
+        <div class="container">
+            <h2>
+                <span class="l-en">Long-Horizon Tasks Expose the Real Limitations of a Single Model</span>
+                <span class="l-zh cjk">长时序任务揭示了单一模型的真正短板</span>
+            </h2>
+            <p class="l-en">In ordinary short-horizon tasks, the capability boundaries of a single policy are easy to overlook: one successful grasp or placement may be enough to complete the task. When the horizon grows and subtasks become interdependent, however, a single missing capability or unstable handoff can cause the end-to-end success rate to collapse. On LIBERO-LoHo, whose tasks are roughly four times longer than those in the original LIBERO benchmark, a single VLA can complete some subtasks but can rarely finish the full sequence. π0.5 achieves an average task progress of 55.3% but a full success rate of only 6.4%, while several other standalone policies achieve 0% full success. Even with a hierarchical architecture, the best-performing baseline, H-WM-π0.5, reaches only 64.8% full success, showing that high-level task decomposition alone cannot compensate for missing low-level capabilities or incompatible intermediate states. Through capability-aware routing and reliable handoffs, RoboHarness raises average task progress to <strong>97.5%</strong> and full success to <strong>95.2%</strong>.</p>
+            <p class="l-zh cjk">在普通短任务上，单一策略的能力边界往往不容易暴露：只要完成一次抓取或放置，任务就算成功。但当任务长度扩大、子任务互相依赖时，一个环节的能力缺失或一次不稳定交接，都会让完整成功率快速下降。在约为原始 LIBERO 四倍长度的 LIBERO-LoHo 上，单一 VLA 能完成部分子任务，却几乎无法完整走完长时序流程。π0.5 的平均任务进度达到 55.3%，完整成功率却只有 6.4%；多种其他单一策略的完整成功率为 0。即使采用分层架构，表现最好的 H-WM-π0.5 也只取得 64.8% 的完整成功，说明高层任务分解仍无法弥补底层能力缺失与中间状态不兼容。RoboHarness 通过能力感知路由与稳定交接，将平均任务进度提升至 <strong>97.5%</strong>，完整成功率达到 <strong>95.2%</strong>。</p>
+
+            <p class="table-cap">
+                <span class="l-en"><span class="fig-num">Table 2</span> | Zero-shot long-horizon evaluation on LIBERO-LoHo. RoboHarness integrates three underlying policies: π0.5, an RL-trained OpenVLA policy, and TAMP. Each entry reports task progress / full success rate (%).</span>
+                <span class="l-zh cjk"><span class="fig-num">表 2</span> | LIBERO-LoHo 零样本长时序评估。RoboHarness 集成三种底层策略：π0.5、经 RL 训练的 OpenVLA 和 TAMP。各项结果为任务进度 / 完整成功率（%）。</span>
+            </p>
+            <div class="table-scroll">
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th><span class="l-en">Method</span><span class="l-zh cjk">方法</span></th>
+                        <th><span class="l-en">Task 1</span><span class="l-zh cjk">任务 1</span></th>
+                        <th><span class="l-en">Task 2</span><span class="l-zh cjk">任务 2</span></th>
+                        <th><span class="l-en">Task 3</span><span class="l-zh cjk">任务 3</span></th>
+                        <th><span class="l-en">Task 4</span><span class="l-zh cjk">任务 4</span></th>
+                        <th><span class="l-en">Task 5</span><span class="l-zh cjk">任务 5</span></th>
+                        <th><span class="l-en">Average</span><span class="l-zh cjk">平均</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="highlight">
+                        <td><strong>RoboHarness (Ours)</strong></td>
                         <td class="best">100.0 / 100.0</td><td class="best">97.3 / 96.0</td><td class="best">98.7 / 96.0</td>
                         <td class="best">94.7 / 92.0</td><td class="best">97.0 / 92.0</td><td class="best">97.5 / 95.2</td>
                     </tr>
@@ -274,108 +307,65 @@
                     <tr><td>π0.5</td><td>66.0 / 4.0</td><td>73.3 / 24.0</td><td>54.7 / 4.0</td><td>44.7 / 0.0</td><td>38.0 / 0.0</td><td>55.3 / 6.4</td></tr>
                     <tr><td>π0</td><td>54.0 / 0.0</td><td>62.0 / 28.0</td><td>44.0 / 0.0</td><td>31.3 / 0.0</td><td>34.0 / 0.0</td><td>45.1 / 5.6</td></tr>
                     <tr><td>X-VLA</td><td>48.8 / 0.0</td><td>16.7 / 0.0</td><td>23.3 / 0.0</td><td>33.3 / 0.0</td><td>40.0 / 0.0</td><td>32.4 / 0.0</td></tr>
-                    <tr><td>Gr00t-N1.5</td><td>0.0 / 0.0</td><td>30.7 / 0.0</td><td>34.7 / 0.0</td><td>2.7 / 0.0</td><td>0.0 / 0.0</td><td>13.6 / 0.0</td></tr>
+                    <tr><td>GR00T-N1.5</td><td>0.0 / 0.0</td><td>30.7 / 0.0</td><td>34.7 / 0.0</td><td>2.7 / 0.0</td><td>0.0 / 0.0</td><td>13.6 / 0.0</td></tr>
                     <tr><td>OpenVLA-OFT</td><td>0.0 / 0.0</td><td>60.0 / 0.0</td><td>17.3 / 0.0</td><td>22.7 / 0.0</td><td>0.0 / 0.0</td><td>20.0 / 0.0</td></tr>
                     <tr><td>OpenVLA</td><td>0.0 / 0.0</td><td>2.7 / 0.0</td><td>24.0 / 0.0</td><td>2.7 / 0.0</td><td>0.0 / 0.0</td><td>5.9 / 0.0</td></tr>
                 </tbody>
             </table>
             </div>
-            <p class="result-takeaway">
-                <strong>Takeaway:</strong> On long-horizon tasks RoboHarness reaches 95.2% average success (97.5% Q-score) —
-                far above the strongest baseline (H-WM-π0.5, 64.8%) — and is the only method to solve every task, while pure
-                VLA policies collapse to near-zero success. <span class="muted">Bold = highest per column.</span>
-            </p>
-
-            <h3>LIBERO-Plus benchmark — perturbation robustness</h3>
-            <p>Success rate (%) under seven perturbation categories, plus the overall average.</p>
-            <div class="table-scroll">
-            <table class="results-table">
-                <thead>
-                    <tr>
-                        <th>Model</th>
-                        <th>Robot State</th><th>Language</th><th>Layout</th><th>Background</th>
-                        <th>Sensor</th><th>Camera</th><th>Light</th><th>Average</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="highlight">
-                        <td><strong>RoboHarness (ours)</strong></td>
-                        <td class="best">90.4%</td><td class="best">97.0%</td><td class="best">86.8%</td><td class="best">97.1%</td>
-                        <td>90.3%</td><td class="best">87.6%</td><td class="best">97.4%</td><td class="best">91.9%</td>
-                    </tr>
-                    <tr><td>Pi05</td><td>75.4%</td><td>85.6%</td><td>85.7%</td><td>94.6%</td><td>89.7%</td><td>75.4%</td><td>96.9%</td><td>85.7%</td></tr>
-                    <tr><td>Pi0</td><td>61.0%</td><td>63.5%</td><td>76.4%</td><td>79.0%</td><td>80.1%</td><td>61.0%</td><td>85.0%</td><td>53.6%</td></tr>
-                    <tr><td>UniVLA</td><td>46.2%</td><td>77.6%</td><td>31.9%</td><td>81.0%</td><td>21.2%</td><td>1.8%</td><td>69.0%</td><td>42.9%</td></tr>
-                    <tr><td>OpenVLA-oft</td><td>21.7%</td><td>81.0%</td><td>68.7%</td><td>91.0%</td><td>78.6%</td><td>55.6%</td><td>92.7%</td><td>67.9%</td></tr>
-                    <tr><td>X-VLA</td><td>89.7%</td><td>75.7%</td><td>71.8%</td><td>96.0%</td><td>62.7%</td><td>23.4%</td><td>88.2%</td><td>71.4%</td></tr>
-                    <tr><td>Cosmos-Policy</td><td>63.3%</td><td>81.7%</td><td>82.2%</td><td>88.9%</td><td class="best">92.7%</td><td>75.8%</td><td>96.5%</td><td>82.2%</td></tr>
-                    <tr><td>FAST-WAM</td><td>44.5%</td><td>68.9%</td><td>60.7%</td><td>53.7%</td><td>37.7%</td><td>16.4%</td><td>78.2%</td><td>51.5%</td></tr>
-                    <tr><td>LingBot-VA</td><td>83.0%</td><td>86.4%</td><td>76.2%</td><td>53.1%</td><td>64.4%</td><td>40.9%</td><td>82.3%</td><td>69.5%</td></tr>
-                </tbody>
-            </table>
-            </div>
-            <p class="result-takeaway">
-                <strong>Takeaway:</strong> RoboHarness achieves the highest average (91.9%) and leads on every perturbation
-                category except Sensor (where Cosmos-Policy edges ahead at 92.7%) — a +6.2-point gain over the strongest
-                baseline (Pi05, 85.7%), with no task-specific re-training. <span class="muted">Bold = highest per column.</span>
-            </p>
-
-            <h3>Policy usage across noise types</h3>
-            <p>On the same LIBERO-Plus perturbations, how RoboHarness routes each subtask between the VLA and the motion planner, per perturbation type.</p>
-            <figure class="figure">
-                <img src="assets/images/policy_usage_ratio.png" alt="Stacked horizontal bar chart of VLA vs. motion-planner usage ratio across seven noise types, sorted by VLA share." loading="lazy">
-                <figcaption>
-                    <strong>Policy usage ratio.</strong> Under appearance-style perturbations (light, background, layout) the
-                    orchestrator leans on the VLA (&gt;89%), while under geometric/sensor perturbations (sensor noise, initial
-                    pose) it shifts substantially to the motion planner — evidence of capability-aware routing.
-                </figcaption>
-            </figure>
-
-            <h3>Ablation study</h3>
-            <p>Removing each RoboHarness component (success rate and progress score, %).</p>
-            <figure class="figure">
-                <img src="assets/images/ablation_bar.png" alt="Ablation bar chart: success rate and progress score for the full model versus removing the memory bridge, removing the evolution module, motion-planner-only, and single-policy baselines." loading="lazy">
-            </figure>
-            <p class="result-takeaway">
-                <strong>Takeaway:</strong> Every component matters. Removing the Memory Bridge drops success 86.0% → 60.4%
-                and removing the Evolution Module → 54.6%; a motion planner alone reaches only 36.4%, and single-policy
-                baselines (Pi05, RL-Open-VLA) fail to complete the tasks (0% success) — confirming that heterogeneous
-                orchestration with memory-bridged handoffs drives the gains.
-            </p>
         </div>
     </section>
 
-    <!-- Real Robot Experiments -->
-    <section id="real-robot">
+    <!-- Ablation -->
+    <section id="ablation">
         <div class="container">
-            <h2>Real Robot Experiments</h2>
-            <p>
-                RoboHarness is deployed on real hardware for long-horizon <strong>construction</strong> tasks — building a
-                <em>Bridge</em>, a <em>Taller Bridge</em>, a <em>Tower</em>, a <em>Chinese Character</em>, and a <em>Boat</em>
-                out of blocks. Each task requires coordinating heterogeneous policies through capability-aware routing and
-                memory-bridge handoffs: a VLA handles semantic, contact-rich manipulation (opening drawers, retrieving objects)
-                while a PDDL/task-and-motion planner assembles the precise target structure. To test robustness, we further
-                inject disturbances <em>mid-execution</em> — hiding blocks, undoing progress, adding distractors, and corrupting
-                perception — and measure whether the system recovers.
-            </p>
+            <h2>
+                <span class="l-en">Simply Connecting Policies Is Not Enough</span>
+                <span class="l-zh cjk">不是"串起来"就够了</span>
+            </h2>
+            <p class="l-en">The value of heterogeneous policy coordination does not come from merely adding more models. Without Understanding Skills, task-interpretation errors propagate into task decomposition and policy selection, showing that reliable routing begins with accurate analysis of the task, scene, and input quality. Without Evolution Skills, the system struggles to use new experience to revise its estimates of policy capability boundaries and can repeat the same routing errors under unfamiliar conditions. Without the Memory Bridge, task progress remains relatively high, but full success falls from 86.0% to 60.4% — in other words, the system often selects the correct policy but still fails because the handoff state is incompatible. These three ablations correspond to understanding, adaptation, and handoff — distinct and indispensable elements of heterogeneous policy coordination.</p>
+            <p class="l-zh cjk">异构策略协同的价值，并不来自简单增加模型数量。移除 Understanding Skills 后，任务理解错误会进一步传播至任务分解与策略选择，说明可靠路由首先依赖对任务、场景和输入质量的准确解析；移除 Evolution Skills 后，系统难以利用新经验修正策略能力边界，容易在陌生条件下重复相同的路由错误；移除 Memory Bridge 后，任务进度仍然较高，但完整成功率从 86.0% 降至 60.4%，说明系统虽然选对了策略，却经常因交接状态不兼容而无法完成任务。三项消融分别对应理解、适应与交接，是异构策略协同中相互独立且缺一不可的环节。</p>
+
+            <figure class="figure">
+                <img src="assets/images/ablation_bar.png" alt="Ablation bar chart: success rate and progress score for the full model versus removing the Memory Bridge, removing Evolution, removing Understanding, a motion-planner-only baseline, and single-policy baselines." loading="lazy">
+                <figcaption>
+                    <span class="l-en"><span class="fig-num">Figure 4</span> | Ablation study. Understanding, evolution, and the Memory Bridge address erroneous decomposition, inaccurate capability estimation, and failed policy handoffs, respectively. A single policy can complete only the local stages that match its own capabilities.</span>
+                    <span class="l-zh cjk"><span class="fig-num">图 4</span> | 消融实验：理解、进化与 Memory Bridge 分别解决错误分解、能力估计失准和策略交接失败；单一策略只能完成与自身能力匹配的局部环节。</span>
+                </figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- Real robot -->
+    <section id="realrobot">
+        <div class="container">
+            <h2>
+                <span class="l-en">From Simulation to Real Robots</span>
+                <span class="l-zh cjk">从仿真走向真实机器人</span>
+            </h2>
+            <p class="l-en">The real-robot experiments turn "policy specialization" into an observable execution process. Given a language instruction, the system must plan a target structure, identify which blocks are missing, invoke the VLA to open the cabinet and retrieve the required objects, and then transfer control to TAMP for precise assembly. If blocks are hidden again, a partially completed structure is dismantled, pose estimates are perturbed, or distractor objects are introduced, the system must reassess task progress, update its plan, and recover execution.</p>
+            <p class="l-zh cjk">真实机器人实验进一步把"策略分工"变成了可观察的执行过程。系统需要根据语言指令规划目标结构，判断哪些积木缺失，调用 VLA 打开柜门并取出目标物体，再把控制权交给 TAMP 完成精确搭建。遇到积木再次被藏起、半成品被拆除、位姿估计受扰或场景中加入干扰物时，系统还需要重新评估任务进度、更新计划并恢复执行。</p>
 
             <figure class="figure">
                 <video controls preload="metadata" playsinline muted loop style="width:100%;border-radius:12px;background:#000;box-shadow:0 4px 18px rgba(15,23,42,0.18);">
                     <source src="assets/videos/real_robot_demo.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <figcaption><strong>Real-robot demo — "build a Bridge" with a missing block.</strong> RoboHarness (1) receives
-                the task prompt and notices a required block is missing; (2) constructs a Memory Bridge into the VLA's
-                distribution; (3) the VLA opens the drawer and (4) takes out the missing block; (5) the PDDL planner then builds
-                the required structure — heterogeneous policies chained through memory-bridged handoffs.</figcaption>
+                <figcaption>
+                    <span class="l-en"><span class="fig-num">Figure 5</span> | Real-robot demo — "build a Bridge" with a missing block. RoboHarness (1) receives the task prompt and notices a required block is missing; (2) constructs a Memory Bridge into the VLA's distribution; (3) the VLA opens the drawer and (4) takes out the missing block; (5) the TAMP planner then builds the required structure — heterogeneous policies chained through memory-bridged handoffs.</span>
+                    <span class="l-zh cjk"><span class="fig-num">图 5</span> | 真实机器人演示——在缺少积木的情况下"搭建一座桥"。RoboHarness（1）接收任务指令并发现缺少所需积木；（2）构造进入 VLA 分布的 Memory Bridge；（3）VLA 打开抽屉并（4）取出缺失积木；（5）TAMP 规划器随后搭出目标结构——异构策略通过桥接交接串联起来。</span>
+                </figcaption>
             </figure>
 
             <div class="results-two-col">
                 <div>
-                    <h3>Task success rate</h3>
+                    <h3><span class="l-en">Task success rate</span><span class="l-zh cjk">各目标结构成功率</span></h3>
                     <div class="table-scroll">
                     <table class="results-table">
-                        <thead><tr><th>Task Request</th><th>Success Rate</th></tr></thead>
+                        <thead><tr>
+                            <th><span class="l-en">Target Structure</span><span class="l-zh cjk">目标结构</span></th>
+                            <th><span class="l-en">Success Rate</span><span class="l-zh cjk">成功率</span></th>
+                        </tr></thead>
                         <tbody>
                             <tr><td>Bridge</td><td>86.7%</td></tr>
                             <tr><td>Taller Bridge</td><td>66.7%</td></tr>
@@ -387,135 +377,137 @@
                     </div>
                 </div>
                 <div>
-                    <h3>Robustness to injected disturbance</h3>
+                    <h3><span class="l-en">Robustness to injected disturbance</span><span class="l-zh cjk">执行期扰动下的鲁棒性</span></h3>
                     <div class="table-scroll">
                     <table class="results-table">
-                        <thead><tr><th>Injected Disturbance</th><th>Success Rate</th></tr></thead>
+                        <thead><tr>
+                            <th><span class="l-en">Injected Disturbance</span><span class="l-zh cjk">注入扰动</span></th>
+                            <th><span class="l-en">Success Rate</span><span class="l-zh cjk">成功率</span></th>
+                        </tr></thead>
                         <tbody>
-                            <tr><td>Hide Blocks</td><td>66.7%</td></tr>
-                            <tr><td>Break Progress</td><td>80.0%</td></tr>
-                            <tr><td>Distracting Blocks</td><td class="best">86.7%</td></tr>
-                            <tr><td>Perception Noise</td><td>73.3%</td></tr>
+                            <tr><td><span class="l-en">Hide Blocks</span><span class="l-zh cjk">藏起积木</span></td><td>66.7%</td></tr>
+                            <tr><td><span class="l-en">Break Progress</span><span class="l-zh cjk">破坏进度</span></td><td>80.0%</td></tr>
+                            <tr><td><span class="l-en">Distracting Blocks</span><span class="l-zh cjk">干扰积木</span></td><td class="best">86.7%</td></tr>
+                            <tr><td><span class="l-en">Perception Noise</span><span class="l-zh cjk">感知噪声</span></td><td>73.3%</td></tr>
                         </tbody>
                     </table>
                     </div>
                 </div>
             </div>
-            <p class="result-takeaway">
-                <strong>Takeaway:</strong> RoboHarness completes long-horizon construction tasks on real hardware (up to 93.3%
-                on Tower) and stays robust when the environment is actively disturbed mid-execution — recovering from hidden
-                blocks, undone progress, distractors, and perception noise via memory-bridged re-planning.
-            </p>
+
+            <p class="l-en">These experiments do not show that any underlying model has suddenly acquired every capability. Rather, they demonstrate that the system can identify which capability is currently missing, reroute between policies, and continue execution without restarting the entire task.</p>
+            <p class="l-zh cjk">这些实验验证的并不是某个底层模型突然获得了全部能力，而是系统能够识别当前缺少哪种能力，在策略之间重新路由，并在不中断整个任务的前提下继续执行。</p>
         </div>
     </section>
 
-    <!-- Code & Resources -->
-    <section id="code">
+    <!-- Conclusion -->
+    <section id="conclusion">
         <div class="container">
-            <h2>Code & Resources</h2>
-            <div class="resource-grid">
-                <div class="resource-card">
-                    <span class="icon">💻</span>
-                    <h3>GitHub Repository</h3>
-                    <p>Implementation, orchestration harness, and auxiliary tools. <em>(Repository is being populated.)</em></p>
-                    <a href="https://github.com/markli1hoshipu/RoboHarness" class="btn btn-primary">View Code</a>
-                </div>
-                <div class="resource-card">
-                    <span class="icon">📑</span>
-                    <h3>Paper</h3>
-                    <p>Full paper with method, problem formulation, and experiments.</p>
-                    <span class="btn btn-primary" style="opacity:.55;cursor:not-allowed;" aria-disabled="true">Coming soon</span>
-                </div>
+            <h2>
+                <span class="l-en">The Competition in Embodied AI Is Shifting from Models to Systems</span>
+                <span class="l-zh cjk">具身智能的竞争，正在从模型走向系统</span>
+            </h2>
+            <p class="l-en">The universal embodied model remains worth pursuing. Before it truly arrives, however, robots must confront real capability boundaries: every policy has tasks at which it excels, input conditions on which it depends, and out-of-distribution regions in which it is fragile. Ignoring these boundaries and pursuing ever-larger unified models alone may not be the shortest path to solving complex real-world tasks.</p>
+            <p class="l-zh cjk">"万能具身模型"仍然值得探索，但在其真正到来之前，机器人必须面对现实的能力边界：每种策略都有擅长的任务、依赖的输入条件和脆弱的分布外区域。忽视这些边界，一味追求更大的统一模型，未必是解决复杂真实任务的最短路径。</p>
+
+            <p class="l-en">Heterogeneous policy orchestration offers a more practical path forward. It does not require one model to master every capability immediately. Instead, it enables the system to understand when different policies are reliable, how they should divide the work, where control should be handed off, and how failures should update future decisions. While creating system-level capabilities that surpass those of any individual policy, orchestration also accumulates cross-capability, long-horizon data that a single model would struggle to generate independently — data that can, in turn, support the training of more unified embodied models. Heterogeneous policy orchestration is therefore not the opposite of the universal model; it is a practical route toward it.</p>
+            <p class="l-zh cjk">异构策略编排提供了一条更现实的演进路径：不要求单一模型立即掌握所有能力，而是让系统理解不同策略何时可靠、如何分工、在哪里交接，以及怎样从失败中更新判断。在形成超越单一策略的系统能力的同时，编排过程还能积累单个模型难以独立产生的跨能力、长时序数据，进一步反哺统一具身模型的训练。异构策略编排并非万能模型的对立面，而是推动具身智能向万能模型演进的一条现实路径。</p>
+
+            <div class="callout">
+                <span class="l-en">From <span class="q">"finding the strongest model"</span> to <span class="q">"organizing the right capabilities"</span> — embodied AI is moving from model-level intelligence to system-level intelligence.</span>
+                <span class="l-zh cjk">从<span class="q">"寻找最强模型"</span>到<span class="q">"组织最合适的能力"</span>——具身智能正从模型能力迈向系统能力。</span>
             </div>
         </div>
     </section>
 
-    <!-- Citation -->
-    <section id="citation">
+    <!-- Paper info + citation -->
+    <section id="paper">
         <div class="container">
-            <h2>Citation</h2>
-            <p>If you find this work useful, please cite:</p>
+            <h2>
+                <span class="l-en">Paper &amp; Resources</span>
+                <span class="l-zh cjk">论文与资源</span>
+            </h2>
+            <div class="paper-info">
+                <p class="title">RoboHarness: Memory-Driven Orchestration of Heterogeneous Robot Policies for Long-Horizon Planning</p>
+                <p style="margin:0;color:var(--text-light);">Jinbang Huang, Yuanzhao Hu, Zhiyuan Li, Ran Qi, Yixin Xiao, Zhanguang Zhang, Mark Coates, Tongtong Cao, Yingxue Zhang · Huawei Noah's Ark Lab &amp; McGill University</p>
+                <div class="links">
+                    <a href="https://arxiv.org/abs/2607.18060" class="btn btn-ink">📑 <span class="l-en">Read the paper (arXiv)</span><span class="l-zh cjk">阅读论文（arXiv）</span></a>
+                    <a href="https://github.com/markli1hoshipu/RoboHarness" class="btn btn-ink">💻 <span class="l-en">Code</span><span class="l-zh cjk">代码</span></a>
+                </div>
+            </div>
+
+            <h3 style="margin-top:2.2rem;"><span class="l-en">Citation</span><span class="l-zh cjk">引用</span></h3>
             <div class="citation-box">
                 <button class="copy-button" onclick="copyBibtex()">Copy BibTeX</button>
                 <pre><code id="bibtex">@misc{huang2026roboharness,
-  title  = {RoboHarness: Memory-Driven Orchestration and Chaining of Heterogeneous Policies for Long-Horizon Robot Planning},
+  title  = {RoboHarness: Memory-Driven Orchestration of Heterogeneous Policies for Long-Horizon Robot Planning},
   author = {Huang, Jinbang and Hu, Yuanzhao and Li, Zhiyuan and Qi, Ran and Xiao, Yixin and Zhang, Zhanguang and Coates, Mark and Cao, Tongtong and Zhang, Yingxue},
-  year   = {2026}
+  year   = {2026},
+  eprint = {2607.18060},
+  archivePrefix = {arXiv}
 }</code></pre>
             </div>
         </div>
     </section>
 
-    <!-- Team -->
-    <section id="team">
-        <div class="container">
-            <h2>Team</h2>
-            <div class="team-grid">
-                <div class="team-member">
-                    <h4>Jinbang Huang</h4>
-                    <p class="affiliation">Huawei Noah's Ark Lab</p>
-                </div>
-                <div class="team-member">
-                    <h4>Yuanzhao Hu</h4>
-                    <p class="affiliation">Huawei Noah's Ark Lab</p>
-                </div>
-                <div class="team-member">
-                    <h4>Zhiyuan Li</h4>
-                    <p class="affiliation">Huawei Noah's Ark Lab</p>
-                </div>
-                <div class="team-member">
-                    <h4>Ran Qi</h4>
-                    <p class="affiliation">Huawei Noah's Ark Lab</p>
-                </div>
-                <div class="team-member">
-                    <h4>Yixin Xiao</h4>
-                    <p class="affiliation">Huawei Noah's Ark Lab</p>
-                </div>
-                <div class="team-member">
-                    <h4>Zhanguang Zhang</h4>
-                    <p class="affiliation">Huawei Noah's Ark Lab</p>
-                </div>
-                <div class="team-member">
-                    <h4>Mark Coates</h4>
-                    <p class="affiliation">McGill University</p>
-                </div>
-                <div class="team-member">
-                    <h4>Tongtong Cao</h4>
-                    <p class="affiliation">Huawei Noah's Ark Lab</p>
-                </div>
-                <div class="team-member">
-                    <h4>Yingxue Zhang</h4>
-                    <p class="affiliation">Huawei Noah's Ark Lab</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div><!-- /.article -->
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2026 The authors. All rights reserved.</p>
             <p>
-                <span style="opacity:.6;">PDF (coming soon)</span> |
+                <a href="https://arxiv.org/abs/2607.18060">arXiv</a> |
                 <a href="https://github.com/markli1hoshipu/RoboHarness">GitHub</a>
             </p>
         </div>
     </footer>
 
     <script>
+        // ---- Language toggle (EN / 中文) ----
+        (function () {
+            var root = document.documentElement;
+            var TITLES = {
+                en: "RoboHarness — Moving Beyond the Universal Embodied Model",
+                zh: "RoboHarness — 告别万能具身模型崇拜"
+            };
+            function setLang(lang) {
+                if (lang !== 'zh') lang = 'en';
+                if (lang === 'zh') { root.classList.add('zh'); root.setAttribute('lang', 'zh'); }
+                else { root.classList.remove('zh'); root.setAttribute('lang', 'en'); }
+                document.title = TITLES[lang];
+                try { localStorage.setItem('roboharness-lang', lang); } catch (e) {}
+                document.querySelectorAll('[data-lang-btn]').forEach(function (b) {
+                    b.classList.toggle('active', b.getAttribute('data-lang-btn') === lang);
+                });
+            }
+            document.querySelectorAll('[data-lang-btn]').forEach(function (b) {
+                b.addEventListener('click', function () { setLang(b.getAttribute('data-lang-btn')); });
+            });
+            var saved;
+            try { saved = localStorage.getItem('roboharness-lang'); } catch (e) {}
+            if (!saved) {
+                var nav = (navigator.language || '').toLowerCase();
+                saved = nav.indexOf('zh') === 0 ? 'zh' : 'en';
+            }
+            setLang(saved);
+        })();
+
+        // ---- Copy BibTeX ----
         function copyBibtex() {
-            const bibtex = document.getElementById('bibtex').textContent;
-            navigator.clipboard.writeText(bibtex).then(() => {
-                const button = document.querySelector('.copy-button');
+            var bibtex = document.getElementById('bibtex').textContent;
+            navigator.clipboard.writeText(bibtex).then(function () {
+                var button = document.querySelector('.copy-button');
                 button.textContent = '✓ Copied!';
-                setTimeout(() => { button.textContent = 'Copy BibTeX'; }, 2000);
+                setTimeout(function () { button.textContent = 'Copy BibTeX'; }, 2000);
             });
         }
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+        // ---- Smooth anchor scrolling ----
+        document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
             });
         });
     </script>
