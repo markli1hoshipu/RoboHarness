@@ -41,7 +41,7 @@
             <p class="kicker">RoboHarness</p>
             <h1>
                 <span class="l-en">Moving Beyond the Universal Embodied Model</span>
-                <span class="l-zh cjk">告别万能具身模型崇拜</span>
+                <span class="l-zh cjk">告别通用具身模型崇拜</span>
             </h1>
             <p class="sub">
                 <span class="l-en">Embodied AI Is Shifting Toward Heterogeneous Policy Orchestration</span>
@@ -79,7 +79,7 @@
         <div class="container">
             <div class="callout">
                 <span class="l-en">There is no universally best model — only the policy best suited to the situation.</span>
-                <span class="l-zh cjk">没有最强的模型，只有最合适的策略。</span>
+                <span class="l-zh cjk"><strong>RoboHarness:</strong> 没有最强的模型，只有最合适的策略。</span>
             </div>
 
             <p class="l-en">Embodied AI is in the midst of a race to expand model capabilities. VLA models continue to scale up parameters and training data; WAMs seek to improve decision-making by predicting future outcomes; RL strengthens specific behaviors through post-training; and TAMP relies on logical and geometric constraints for precise planning… Each approach is trying to answer the same question: how can we make robots more intelligent and more general?</p>
@@ -227,16 +227,16 @@
                     <tr class="highlight">
                         <td><strong>RoboHarness (Ours)</strong></td>
                         <td class="best">98.7</td><td class="best">90.4</td><td class="best">97.0</td><td class="best">86.8</td>
-                        <td class="best">97.1</td><td>90.3</td><td class="best">87.6</td><td class="best">97.4</td><td class="best">93.2</td>
+                        <td class="best">97.1</td><td class="second">90.3</td><td class="best">87.6</td><td class="best">97.4</td><td class="best">93.2</td>
                     </tr>
-                    <tr><td>π0.5</td><td>96.9</td><td>75.4</td><td>85.6</td><td>85.7</td><td>94.6</td><td>89.7</td><td>75.4</td><td>96.9</td><td>85.7</td></tr>
+                    <tr><td>π0.5</td><td>96.9</td><td>75.4</td><td>85.6</td><td class="second">85.7</td><td>94.6</td><td>89.7</td><td>75.4</td><td class="second">96.9</td><td class="second">85.7</td></tr>
                     <tr><td>π0</td><td>94.2</td><td>61.0</td><td>63.5</td><td>76.4</td><td>79.0</td><td>80.1</td><td>61.0</td><td>85.0</td><td>53.6</td></tr>
                     <tr><td>UniVLA</td><td>95.2</td><td>46.2</td><td>77.6</td><td>31.9</td><td>81.0</td><td>21.2</td><td>1.8</td><td>69.0</td><td>42.9</td></tr>
                     <tr><td>OpenVLA-OFT</td><td>97.6</td><td>21.7</td><td>81.0</td><td>68.7</td><td>91.0</td><td>78.6</td><td>55.6</td><td>92.7</td><td>67.9</td></tr>
-                    <tr><td>X-VLA</td><td>98.1</td><td>89.7</td><td>75.7</td><td>71.8</td><td>96.0</td><td>62.7</td><td>23.4</td><td>88.2</td><td>71.4</td></tr>
-                    <tr><td>Cosmos-Policy</td><td>98.5</td><td>63.3</td><td>81.7</td><td>82.2</td><td>88.9</td><td class="best">92.7</td><td>75.8</td><td>96.5</td><td>82.2</td></tr>
+                    <tr><td>X-VLA</td><td>98.1</td><td class="second">89.7</td><td>75.7</td><td>71.8</td><td class="second">96.0</td><td>62.7</td><td>23.4</td><td>88.2</td><td>71.4</td></tr>
+                    <tr><td>Cosmos-Policy</td><td class="second">98.5</td><td>63.3</td><td>81.7</td><td>82.2</td><td>88.9</td><td class="best">92.7</td><td class="second">75.8</td><td>96.5</td><td>82.2</td></tr>
                     <tr><td>FAST-WAM</td><td>97.6</td><td>44.5</td><td>68.9</td><td>60.7</td><td>53.7</td><td>37.7</td><td>16.4</td><td>78.2</td><td>51.5</td></tr>
-                    <tr><td>LingBot-VA</td><td>98.5</td><td>83.0</td><td>86.4</td><td>76.2</td><td>53.1</td><td>64.4</td><td>40.9</td><td>82.3</td><td>69.5</td></tr>
+                    <tr><td>LingBot-VA</td><td class="second">98.5</td><td>83.0</td><td class="second">86.4</td><td>76.2</td><td>53.1</td><td>64.4</td><td>40.9</td><td>82.3</td><td>69.5</td></tr>
                 </tbody>
             </table>
             </div>
@@ -283,7 +283,7 @@
             <p class="l-zh cjk">在普通短任务上，单一策略的能力边界往往不容易暴露：只要完成一次抓取或放置，任务就算成功。但当任务长度扩大、子任务互相依赖时，一个环节的能力缺失或一次不稳定交接，都会让完整成功率快速下降。在约为原始 LIBERO 四倍长度的 LIBERO-LoHo 上，单一 VLA 能完成部分子任务，却几乎无法完整走完长时序流程。π0.5 的平均任务进度达到 55.3%，完整成功率却只有 6.4%；多种其他单一策略的完整成功率为 0。即使采用分层架构，表现最好的 H-WM-π0.5 也只取得 64.8% 的完整成功，说明高层任务分解仍无法弥补底层能力缺失与中间状态不兼容。RoboHarness 通过能力感知路由与稳定交接，将平均任务进度提升至 <strong>97.5%</strong>，完整成功率达到 <strong>95.2%</strong>。</p>
 
             <p class="table-cap">
-                <span class="l-en"><span class="fig-num">Table 2</span> | Zero-shot long-horizon evaluation on LIBERO-LoHo. RoboHarness integrates three underlying policies: π0.5, an RL-trained OpenVLA policy, and TAMP. Each entry reports task progress / full success rate (%).</span>
+                <span class="l-en"><span class="fig-num">Table 2</span> | Zero-shot long-horizon evaluation on LIBERO-LoHo. RoboHarness integrates three underlying policies: π0.5, an RL-trained OpenVLA policy, and TAMP. Each entry reports task progress/success rate (%).</span>
                 <span class="l-zh cjk"><span class="fig-num">表 2</span> | LIBERO-LoHo 零样本长时序评估。RoboHarness 集成三种底层策略：π0.5、经 RL 训练的 OpenVLA 和 TAMP。各项结果为任务进度 / 完整成功率（%）。</span>
             </p>
             <div class="table-scroll">
@@ -305,7 +305,7 @@
                         <td class="best">100.0 / 100.0</td><td class="best">97.3 / 96.0</td><td class="best">98.7 / 96.0</td>
                         <td class="best">94.7 / 92.0</td><td class="best">97.0 / 92.0</td><td class="best">97.5 / 95.2</td>
                     </tr>
-                    <tr><td>H-WM-π0.5</td><td>98.0 / 94.0</td><td>86.7 / 60.0</td><td>74.0 / 46.0</td><td>70.7 / 42.0</td><td>95.0 / 82.0</td><td>84.9 / 64.8</td></tr>
+                    <tr><td>H-WM-π0.5</td><td class="second">98.0 / 94.0</td><td class="second">86.7 / 60.0</td><td class="second">74.0 / 46.0</td><td class="second">70.7 / 42.0</td><td class="second">95.0 / 82.0</td><td class="second">84.9 / 64.8</td></tr>
                     <tr><td>Logic-guided π0.5</td><td>95.3 / 86.0</td><td>84.7 / 58.0</td><td>54.7 / 16.0</td><td>39.3 / 4.0</td><td>92.0 / 78.0</td><td>73.2 / 48.4</td></tr>
                     <tr><td>LLM-guided π0.5</td><td>84.7 / 54.0</td><td>80.7 / 42.0</td><td>68.0 / 24.0</td><td>41.3 / 4.0</td><td>59.5 / 10.0</td><td>66.8 / 26.8</td></tr>
                     <tr><td>π0.5</td><td>66.0 / 4.0</td><td>73.3 / 24.0</td><td>54.7 / 4.0</td><td>44.7 / 0.0</td><td>38.0 / 0.0</td><td>55.3 / 6.4</td></tr>
@@ -407,6 +407,7 @@
                 <p style="margin:0.35rem 0 0;color:var(--text-light);font-size:0.92rem;">Huawei Noah's Ark Lab · University of British Columbia · University of Toronto · McGill University · Department of Foundation Model, 2012 Labs</p>
                 <div class="links">
                     <a href="https://arxiv.org/abs/2607.18060" class="btn btn-ink">📑 <span class="l-en">Read the paper (arXiv)</span><span class="l-zh cjk">阅读论文（arXiv）</span></a>
+                    <a href="https://robo-harness.com" class="btn btn-ink">🌐 <span class="l-en">Project Page</span><span class="l-zh cjk">项目主页</span></a>
                     <a href="https://github.com/markli1hoshipu/RoboHarness" class="btn btn-ink">💻 <span class="l-en">Code</span><span class="l-zh cjk">代码</span></a>
                 </div>
             </div>
@@ -444,7 +445,7 @@
             var root = document.documentElement;
             var TITLES = {
                 en: "RoboHarness — Moving Beyond the Universal Embodied Model",
-                zh: "RoboHarness — 告别万能具身模型崇拜"
+                zh: "RoboHarness — 告别通用具身模型崇拜"
             };
             function setLang(lang) {
                 if (lang !== 'zh') lang = 'en';

@@ -368,6 +368,12 @@ section:nth-child(even) {
   font-weight: bold;
 }
 
+/* second-best value per column (academic convention: bold = best, underline = 2nd) */
+.results-table .second {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* Method Diagram */
 .method-diagram {
   text-align: center;
@@ -945,6 +951,9 @@ section.hero-article {
   font-size: 1.12rem; font-weight: 600; text-align: left;
 }
 .callout .q { color: var(--accent-color); }
+/* strong inside a callout must follow the banner's text color, not the
+   global .article strong navy (which is invisible on the navy banner). */
+.callout strong { color: inherit; }
 
 /* ---- Capability table ---- */
 .cap-table { width: 100%; border-collapse: collapse; margin: 1.8rem 0 0.5rem; }
