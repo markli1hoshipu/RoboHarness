@@ -473,11 +473,9 @@
             });
             var initial = FORCED;
             if (!initial) {
+                // Respect a returning visitor's explicit toggle; otherwise default to English.
                 try { initial = localStorage.getItem('roboharness-lang'); } catch (e) {}
-                if (!initial) {
-                    var nav = (navigator.language || '').toLowerCase();
-                    initial = nav.indexOf('zh') === 0 ? 'zh' : 'en';
-                }
+                if (!initial) { initial = 'en'; }
             }
             apply(initial);
         })();
