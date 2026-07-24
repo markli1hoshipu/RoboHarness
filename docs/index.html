@@ -347,53 +347,23 @@
             <p class="l-zh cjk">真实机器人实验进一步把"策略分工"变成了可观察的执行过程。系统需要根据语言指令规划目标结构，判断哪些积木缺失，调用 VLA 打开柜门并取出目标物体，再把控制权交给 TAMP 完成精确搭建。遇到积木再次被藏起、半成品被拆除、位姿估计受扰或场景中加入干扰物时，系统还需要重新评估任务进度、更新计划并恢复执行。</p>
 
             <figure class="figure">
+                <img src="assets/images/real_robot_results.png" alt="Real-robot experiment: (a) a six-frame photo sequence of a robot arm opening a cabinet drawer and retrieving blocks; (b) bar chart of task success rate across target structures (Bridge, Taller Bridge, Tower, Chinese Character, Boat); (c) bar chart of task success under disturbances (Hide Blocks, Break Progress, Distracting Blocks, Perception Noise)." loading="lazy">
+                <figcaption>
+                    <span class="l-en"><span class="fig-num">Figure 5</span> | Examples from the real-robot experiments, together with success rates across target structures and execution-time perturbations.</span>
+                    <span class="l-zh cjk"><span class="fig-num">图 5</span> | 真实机器人实验示例，以及不同目标结构和执行期扰动下的成功率。</span>
+                </figcaption>
+            </figure>
+
+            <figure class="figure">
                 <video controls preload="metadata" playsinline muted loop style="width:100%;border-radius:12px;background:#000;box-shadow:0 4px 18px rgba(15,23,42,0.18);">
                     <source src="assets/videos/real_robot_demo.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <figcaption>
-                    <span class="l-en"><span class="fig-num">Figure 5</span> | Real-robot demo — "build a Bridge" with a missing block. RoboHarness (1) receives the task prompt and notices a required block is missing; (2) constructs a Memory Bridge into the VLA's distribution; (3) the VLA opens the drawer and (4) takes out the missing block; (5) the TAMP planner then builds the required structure — heterogeneous policies chained through memory-bridged handoffs.</span>
-                    <span class="l-zh cjk"><span class="fig-num">图 5</span> | 真实机器人演示——在缺少积木的情况下"搭建一座桥"。RoboHarness（1）接收任务指令并发现缺少所需积木；（2）构造进入 VLA 分布的 Memory Bridge；（3）VLA 打开抽屉并（4）取出缺失积木；（5）TAMP 规划器随后搭出目标结构——异构策略通过桥接交接串联起来。</span>
+                    <span class="l-en"><strong>Rollout video</strong> — "build a Bridge" with a missing block. RoboHarness (1) receives the task prompt and notices a required block is missing; (2) constructs a Memory Bridge into the VLA's distribution; (3) the VLA opens the drawer and (4) takes out the missing block; (5) the TAMP planner then builds the required structure — heterogeneous policies chained through memory-bridged handoffs.</span>
+                    <span class="l-zh cjk"><strong>演示视频</strong>——在缺少积木的情况下"搭建一座桥"。RoboHarness（1）接收任务指令并发现缺少所需积木；（2）构造进入 VLA 分布的 Memory Bridge；（3）VLA 打开抽屉并（4）取出缺失积木；（5）TAMP 规划器随后搭出目标结构——异构策略通过桥接交接串联起来。</span>
                 </figcaption>
             </figure>
-
-            <div class="results-two-col">
-                <div>
-                    <h3><span class="l-en">Task success rate</span><span class="l-zh cjk">各目标结构成功率</span></h3>
-                    <div class="table-scroll">
-                    <table class="results-table">
-                        <thead><tr>
-                            <th><span class="l-en">Target Structure</span><span class="l-zh cjk">目标结构</span></th>
-                            <th><span class="l-en">Success Rate</span><span class="l-zh cjk">成功率</span></th>
-                        </tr></thead>
-                        <tbody>
-                            <tr><td>Bridge</td><td>86.7%</td></tr>
-                            <tr><td>Taller Bridge</td><td>66.7%</td></tr>
-                            <tr><td>Tower</td><td class="best">93.3%</td></tr>
-                            <tr><td>Chinese Character</td><td>80.0%</td></tr>
-                            <tr><td>Boat</td><td>86.7%</td></tr>
-                        </tbody>
-                    </table>
-                    </div>
-                </div>
-                <div>
-                    <h3><span class="l-en">Robustness to injected disturbance</span><span class="l-zh cjk">执行期扰动下的鲁棒性</span></h3>
-                    <div class="table-scroll">
-                    <table class="results-table">
-                        <thead><tr>
-                            <th><span class="l-en">Injected Disturbance</span><span class="l-zh cjk">注入扰动</span></th>
-                            <th><span class="l-en">Success Rate</span><span class="l-zh cjk">成功率</span></th>
-                        </tr></thead>
-                        <tbody>
-                            <tr><td><span class="l-en">Hide Blocks</span><span class="l-zh cjk">藏起积木</span></td><td>66.7%</td></tr>
-                            <tr><td><span class="l-en">Break Progress</span><span class="l-zh cjk">破坏进度</span></td><td>80.0%</td></tr>
-                            <tr><td><span class="l-en">Distracting Blocks</span><span class="l-zh cjk">干扰积木</span></td><td class="best">86.7%</td></tr>
-                            <tr><td><span class="l-en">Perception Noise</span><span class="l-zh cjk">感知噪声</span></td><td>73.3%</td></tr>
-                        </tbody>
-                    </table>
-                    </div>
-                </div>
-            </div>
 
             <p class="l-en">These experiments do not show that any underlying model has suddenly acquired every capability. Rather, they demonstrate that the system can identify which capability is currently missing, reroute between policies, and continue execution without restarting the entire task.</p>
             <p class="l-zh cjk">这些实验验证的并不是某个底层模型突然获得了全部能力，而是系统能够识别当前缺少哪种能力，在策略之间重新路由，并在不中断整个任务的前提下继续执行。</p>
