@@ -876,29 +876,40 @@ html.zh body {
   .topbar .navlinks { display: none; }
 }
 
-/* ---- Hero (editorial) ---- */
+/* ---- Hero (editorial, matches the PDF: white page, navy title) ---- */
 .hero-article {
-  background: linear-gradient(135deg, #fb923c 0%, #c2410c 100%);
-  color: #fff; padding: 3.4rem 0 3.2rem; text-align: center;
+  background: #ffffff; color: var(--ink);
+  padding: 3.6rem 0 2.8rem; text-align: center;
+  border-bottom: 1px solid var(--rule);
 }
 .hero-article .kicker {
   text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.78rem;
-  font-weight: 700; opacity: 0.9; margin-bottom: 1rem;
+  font-weight: 700; color: var(--accent-color); margin-bottom: 1rem;
 }
 .hero-article h1 {
-  color: #fff; font-size: 2.7rem; line-height: 1.18; margin: 0 auto 0.6rem;
+  color: var(--ink); font-size: 2.7rem; line-height: 1.18; margin: 0 auto 0.6rem;
   max-width: 900px;
 }
 .hero-article .sub {
-  font-size: 1.35rem; font-weight: 600; opacity: 0.96; margin: 0 auto 1.3rem;
+  font-size: 1.35rem; font-weight: 600; color: #3a6299; margin: 0 auto 1.3rem;
   max-width: 820px;
 }
 .hero-article .lede {
-  font-size: 1.06rem; line-height: 1.75; opacity: 0.95;
+  font-size: 1.06rem; line-height: 1.75; color: #55606b;
   max-width: 720px; margin: 0 auto 1.6rem;
 }
-.hero-article .authors { font-size: 1rem; margin: 1.2rem auto 0.3rem; max-width: 820px; opacity: 0.97; }
-.hero-article .authors em { opacity: 0.85; font-size: 0.9rem; }
+.hero-article .authors { font-size: 1rem; margin: 1.2rem auto 0.3rem; max-width: 820px; color: #55606b; }
+.hero-article .authors em { color: #8793a0; font-size: 0.9rem; }
+
+/* Hero buttons: solid navy on the white hero (the old white-outline style
+   was for the orange gradient and is invisible on white). */
+.hero-article .hero-buttons .btn {
+  background: var(--ink); color: #fff; border: none;
+}
+.hero-article .hero-buttons .btn:hover {
+  background: var(--ink-2); color: #fff;
+  transform: translateY(-2px); box-shadow: 0 4px 12px rgba(15,23,42,0.2);
+}
 
 /* ---- Article body ---- */
 .article .container { max-width: 880px; }
