@@ -817,8 +817,8 @@ footer a {
    Editorial article redesign (bilingual EN / 中文)
    ===================================================================== */
 :root {
-  --ink: #17324f;          /* deep navy for headings + banners */
-  --ink-2: #24547e;        /* secondary navy */
+  --ink: #173b57;          /* deep navy — measured from the PDF title/callout */
+  --ink-2: #294a64;        /* secondary navy — measured from the PDF subtitle */
   --paper: #ffffff;
   --paper-2: #f6f4f0;      /* warm off-white for section bands */
   --rule: #e6e2db;
@@ -877,7 +877,9 @@ html.zh body {
 }
 
 /* ---- Hero (editorial, matches the PDF: white page, navy title) ---- */
-.hero-article {
+/* Use `section.hero-article` (specificity 0,1,1) so it beats the base
+   `section:nth-child(even)` band rule and pure white actually applies. */
+section.hero-article {
   background: #ffffff; color: var(--ink);
   padding: 3.6rem 0 2.8rem; text-align: center;
   border-bottom: 1px solid var(--rule);
