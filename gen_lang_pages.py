@@ -17,7 +17,7 @@ PAPER_TITLE = 'RoboHarness: Memory-Driven Orchestration of Heterogeneous Robot P
 PAPER_URL = 'https://arxiv.org/abs/2607.18060v3'
 PAPER_DATE = '2026-09-29'  # Publication of the cited v3, not the website update.
 AUTHORS = ['Jinbang Huang', 'Zhiyuan Li', 'Yuanzhao Hu', 'Ran Qi', 'Yixin Xiao', 'Mark Coates', 'Tongtong Cao', 'Zhanguang Zhang', 'Yingxue Zhang']
-TITLES = {'en': 'RoboHarness | Coding Agent Harness for Robot Control', 'zh': 'RoboHarness：面向机器人控制的 Coding Agent Harness'}
+TITLES = {'en': 'RoboHarness | Coding Agent Harness for Heterogeneous Robot Policies', 'zh': 'RoboHarness：面向异构机器人策略的 Coding Agent Harness'}
 DESCRIPTIONS = {
     'en': 'RoboHarness uses a coding agent harness, execution memory, and Memory Bridge to orchestrate heterogeneous robot policies for long-horizon planning and control.',
     'zh': 'RoboHarness 利用 coding agent harness、执行记忆和 Memory Bridge 编排异构机器人策略，实现长时序机器人规划与控制。',
