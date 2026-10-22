@@ -1,25 +1,22 @@
 # RoboHarness
 
-**Project page:** https://www.robo-harness.com/
+RoboHarness: Memory-Driven Orchestration of Heterogeneous Robot Policies for Long-Horizon Planning
 
-## Moving Beyond the Universal Embodied Model
-### Embodied AI Is Shifting Toward Heterogeneous Policy Orchestration
+A coding agent harness for long-horizon robot planning and heterogeneous policy orchestration.
 
-As VLA, WAM, RL, TAMP, MPC… each model encounters distinct capability boundaries, the key to completing complex robotic tasks may no longer lie in the strength of any single model, but in whether the system can perform capability-aware task decomposition and route each subtask to the right policy at the right time.
+[Paper](https://arxiv.org/abs/2607.18060v3) · [Project website](https://www.robo-harness.com/) · [Citation](#citation)
 
-**Authors:** Jinbang Huang¹, Yuanzhao Hu²,\*, Zhiyuan Li³,\*, Ran Qi³,\*, Yixin Xiao¹, Zhanguang Zhang¹, Mark Coates⁴, Tongtong Cao⁵, Yingxue Zhang¹
+## Research summary
+
+RoboHarness is a coding agent harness for long-horizon robot planning and control through heterogeneous policy orchestration. A coding agent serves as the high-level planner and policy router, while independently developed robot policies execute the selected subtasks. Understanding, memory, and evolution skills support capability-aware task decomposition and policy selection. Memory Bridge uses execution memory to address distribution mismatches during policy handoffs, enabling heterogeneous policies to work together without joint retraining.
+
+**Authors:** Jinbang Huang¹, Zhiyuan Li²,\*, Yuanzhao Hu³,\*, Ran Qi²,\*, Yixin Xiao¹, Mark Coates⁴, Tongtong Cao⁵, Zhanguang Zhang¹, Yingxue Zhang¹
 
 ¹Huawei Noah's Ark Lab · ²University of British Columbia · ³University of Toronto · ⁴McGill University · ⁵Department of Foundation Model, 2012 Labs
 
 \*Work done during the internship at Huawei Noah's Ark Lab
 
-[📑 Read the paper (arXiv)](https://arxiv.org/abs/2607.18060) · [🌐 Project Page](https://www.robo-harness.com/) · [💻 Code](https://github.com/markli1hoshipu/RoboHarness)
-
-> There is no universally best model — only the policy best suited to the situation.
-
-Embodied AI is in the midst of a race to expand model capabilities. VLA models continue to scale up parameters and training data; WAMs seek to improve decision-making by predicting future outcomes; RL strengthens specific behaviors through post-training; and TAMP relies on logical and geometric constraints for precise planning… Each approach is trying to answer the same question: how can we make robots more intelligent and more general?
-
-Yet in the real world, one fact is becoming increasingly clear: no single policy excels simultaneously at semantic understanding, closed-loop control, geometric precision, long-horizon reasoning, and out-of-distribution robustness. A "universal embodied model" remains an inspiring aspiration rather than an engineering reality that can be deployed today.
+This repository currently contains the project website, its page generator, and demonstration media. It does not currently include the robot-policy implementation, training, or evaluation code.
 
 ## See It In Action
 
@@ -35,7 +32,20 @@ Long-horizon rollouts of RoboHarness orchestrating heterogeneous policies — de
 - **Task 8.** Pick up the cookies, alphabet soup, cream cheese, and butter and put them in the tray.
 - **Task 9.** Put the side bowl on the cabinet, put the bowl in the center on the plate, and put the ramekin on the stove.
 
-## The Universal Embodied Model Is Compelling — but How Far Away Is It?
+## Motivation
+
+### Moving Beyond the Universal Embodied Model
+**Embodied AI Is Shifting Toward Heterogeneous Policy Orchestration**
+
+As VLA, WAM, RL, TAMP, MPC… each model encounters distinct capability boundaries, the key to completing complex robotic tasks may no longer lie in the strength of any single model, but in whether the system can perform capability-aware task decomposition and route each subtask to the right policy at the right time.
+
+> There is no universally best model — only the policy best suited to the situation.
+
+Embodied AI is in the midst of a race to expand model capabilities. VLA models continue to scale up parameters and training data; WAMs seek to improve decision-making by predicting future outcomes; RL strengthens specific behaviors through post-training; and TAMP relies on logical and geometric constraints for precise planning… Each approach is trying to answer the same question: how can we make robots more intelligent and more general?
+
+Yet in the real world, one fact is becoming increasingly clear: no single policy excels simultaneously at semantic understanding, closed-loop control, geometric precision, long-horizon reasoning, and out-of-distribution robustness. A "universal embodied model" remains an inspiring aspiration rather than an engineering reality that can be deployed today.
+
+### The Universal Embodied Model Is Compelling — but How Far Away Is It?
 
 A universal embodied model sounds ideal, but it remains far from reality, at least for the foreseeable future. Complex tasks require semantic understanding, logical reasoning, geometric planning, closed-loop control, and failure recovery at the same time. These capabilities not only demand enormous datasets spanning diverse environments and robot embodiments, but also involve different — and sometimes conflicting — training objectives and execution mechanisms. A vast gap remains between achieving breakthroughs in each capability separately and enabling a single model to sustain all of them reliably over long periods in open-world environments.
 
@@ -152,20 +162,25 @@ Heterogeneous policy orchestration offers a more practical path forward. It does
 
 **RoboHarness: Memory-Driven Orchestration of Heterogeneous Robot Policies for Long-Horizon Planning**
 
-Jinbang Huang, Yuanzhao Hu, Zhiyuan Li, Ran Qi, Yixin Xiao, Zhanguang Zhang, Mark Coates, Tongtong Cao, Yingxue Zhang
+Jinbang Huang, Zhiyuan Li, Yuanzhao Hu, Ran Qi, Yixin Xiao, Mark Coates, Tongtong Cao, Zhanguang Zhang, Yingxue Zhang
 
 Huawei Noah's Ark Lab · University of British Columbia · University of Toronto · McGill University · Department of Foundation Model, 2012 Labs
 
-[📑 Read the paper (arXiv)](https://arxiv.org/abs/2607.18060) · [🌐 Project Page](https://www.robo-harness.com/) · [💻 Code](https://github.com/markli1hoshipu/RoboHarness)
+[📑 Read the paper (arXiv)](https://arxiv.org/abs/2607.18060v3) · [🌐 Project Page](https://www.robo-harness.com/) · [💻 Repository](https://github.com/markli1hoshipu/RoboHarness)
 
 ### Citation
+
+arXiv:2607.18060v3, published 2026-09-29 (initial submission: 2026-07-20).
 
 ```bibtex
 @misc{huang2026roboharness,
   title  = {RoboHarness: Memory-Driven Orchestration of Heterogeneous Robot Policies for Long-Horizon Planning},
-  author = {Huang, Jinbang and Hu, Yuanzhao and Li, Zhiyuan and Qi, Ran and Xiao, Yixin and Zhang, Zhanguang and Coates, Mark and Cao, Tongtong and Zhang, Yingxue},
+  author = {Huang, Jinbang and Li, Zhiyuan and Hu, Yuanzhao and Qi, Ran and Xiao, Yixin and Coates, Mark and Cao, Tongtong and Zhang, Zhanguang and Zhang, Yingxue},
   year   = {2026},
-  eprint = {2607.18060},
-  archivePrefix = {arXiv}
+  eprint = {2607.18060v3},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.RO},
+  date = {2026-09-29},
+  url = {https://arxiv.org/abs/2607.18060v3}
 }
 ```
